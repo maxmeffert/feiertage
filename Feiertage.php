@@ -335,7 +335,11 @@ class Feiertage {
 		
 	}
 	
-	public function toArray () {
+	/**
+	 * 
+	 * @return multitype:DateTime
+	 */
+	public function toaArray () {
 		
 		$array = array();
 		
@@ -363,6 +367,38 @@ class Feiertage {
 		
 	}
 	
+	/**
+	 * 
+	 * @param DateTimeInterface $d
+	 * @return DateTime|string
+	 */
+	public function check (DateTimeInterface $d) {
+		
+		$format = "Y-m-d";
+		$dates = $this->toArray();
+
+		foreach ($dates as $i => $date) {
+			
+			/**
+			 * @var $date \DateTime
+			 */
+				
+			if ($date->format($format) == $d->format($format)) {
+				
+				return $i;
+				
+			}
+			
+		}
+		
+		return self::FEIERTAG_NONE;
+		
+	}
+
+	/**
+	 * 
+	 * @return string
+	 */
 	public function __toString () {
 		
 		$format = "Y-m-d";
