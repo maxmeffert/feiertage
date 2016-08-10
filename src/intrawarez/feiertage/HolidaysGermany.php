@@ -1,6 +1,6 @@
 <?php
 
-namespace iwz\feiertage {
+namespace intrawarez\feiertage {
 	
 	/**
 	 * PHP Helper class for german holidiays.
