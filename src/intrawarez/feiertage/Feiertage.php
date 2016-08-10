@@ -61,6 +61,17 @@ namespace intrawarez\feiertage {
 		}
 	
 		/**
+		 * 
+		 * @param int $jahr
+		 * @return \intrawarez\feiertage\Feiertage
+		 */
+		static public function for ($jahr) {
+			
+			return new Feiertage($jahr);
+			
+		}
+		
+		/**
 		 *
 		 * @var int
 		 */
