@@ -1,6 +1,6 @@
 <?php
 
-namespace iwz\feiertage {
+namespace intrawarez\feiertage {
 	
 	abstract class Holidays implements \Serializable, \Iterator, \Countable {
 		

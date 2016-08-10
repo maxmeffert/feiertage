@@ -1,6 +1,6 @@
 <?php
 
-namespace iwz\feiertage {
+namespace intrawarez\feiertage {
 	
 	class Feiertage {
 		
