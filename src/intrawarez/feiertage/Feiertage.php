@@ -141,11 +141,13 @@ namespace intrawarez\feiertage {
 			$this->tagDerDeutschenEinheit = new \DateTime("{$this->jahr}-10-03");
 			$this->reformationstag = new \DateTime("{$this->jahr}-10-31");
 			$this->allerheiligen = new \DateTime("{$this->jahr}-11-01");
-	
-			$this->bussUndBettag = new \DateTime("{$this->jahr}-11-23");
+			
+			// For Buss-Und-Bettag compute the first wednesday before Nov 23.!
+			// init with 22, because 23 may be a wednesday
+			$this->bussUndBettag = new \DateTime("{$this->jahr}-11-22"); 
 	
 			while ($this->bussUndBettag->format("N") != 3) {
-					
+				
 				$this->bussUndBettag->modify("-1 days");
 					
 			}
