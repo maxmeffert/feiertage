@@ -268,7 +268,7 @@ namespace intrawarez\feiertage {
 		/**
 		 * @return \DateTime
 		 */
-		public function getAugsburgertFriedensfest () {
+		public function getAugsburgerFriedensfest () {
 	
 			return clone($this->augsburgerFriedensfest);
 	
