@@ -1,0 +1,25 @@
+{
+    "name": "intrawarez/feiertage",
+    "description": "A PHP library german holidays",
+    "authors": [
+        {
+            "name": "Maximilian Meffert",
+            "email": "packagist@intrawarez.de"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+        	"": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "5.4.*"
+    },
+    "require": {
+    	
+        "php": ">=5.4"
+        
+    }
+}
