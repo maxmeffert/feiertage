@@ -13,11 +13,21 @@ composer require intrawarez/feiertage
 
 ## Usage
 
+### Construction
+
+
 ```php
 
-$holidays2016 = new Feiertage(2016);
+$ft = Feiertage::of(2016);
 
-$easterSunday = $holidays2016->getOsterSonntag();
+
+```
+
+### asdf
+
+```php
+
+$easterSunday = $ft->getOsterSonntag();
 
 
 ```

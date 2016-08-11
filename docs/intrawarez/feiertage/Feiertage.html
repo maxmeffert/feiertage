@@ -79,7 +79,8 @@
     </div>
 
     <p>    class
-    <strong>Feiertage</strong>
+    <strong>Feiertage</strong>        implements
+        <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>
 </p>
 
         
@@ -241,20 +242,40 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<abbr title="intrawarez\feiertage\The">The</abbr>
+                    static&nbsp;int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_GaussianEasterAlgorithm">GaussianEasterAlgorithm</a>(int $X)
+                    <a href="#method_GaussianEasterAlgorithm">GaussianEasterAlgorithm</a>(<abbr title="intrawarez\feiertage\int">int</abbr> $X)
         
                                             <p>The Gaussian Easter Algorithm (Gauss'sche Osterformel)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(int $jahr)
+                    <a href="#method_jahr">jahr</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d = null)
+        
+                                            <p>Gets either the current year or the year of a given date.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../intrawarez/feiertage/Feiertage.html"><abbr title="intrawarez\feiertage\Feiertage">Feiertage</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_of">of</a>(int $jahr = null)
+        
+                                            <p>Creates a new Feiertage instance for a given year.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_check">check</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -397,7 +418,7 @@
                     <a target="_blank" href="http://php.net/DateTime">DateTime</a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAugsburgertFriedensfest">getAugsburgertFriedensfest</a>()
+                    <a href="#method_getAugsburgerFriedensfest">getAugsburgerFriedensfest</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -482,7 +503,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="intrawarez\feiertage\multitype:DateTime">multitype:DateTime</abbr>
+                    <abbr title="intrawarez\feiertage\DateTime">DateTime</abbr>[]
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>()
@@ -493,10 +514,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_check">check</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
+                    <a href="#method_contains">contains</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -504,7 +525,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="intrawarez\feiertage\DateTime">DateTime</abbr>|string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_which">which</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
@@ -515,13 +536,55 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <a target="_blank" href="http://php.net/Iterator">Iterator</a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___toString">__toString</a>()
+                    <a href="#method_getIterator">getIterator</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetExists">offsetExists</a>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetGet">offsetGet</a>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetSet">offsetSet</a>(int $offset, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $value)
+        
+                                            <p>Not Supported!</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetUnset">offsetUnset</a>(int $offset)
+        
+                                            <p>Not Supported!</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -532,9 +595,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_GaussianEasterAlgorithm">
-        <div class="location">at line         line 44</div>
-        <code>        static            <abbr title="intrawarez\feiertage\The">The</abbr>
-    <strong>GaussianEasterAlgorithm</strong>(int $X)
+        <div class="location">at line         line 53</div>
+        <code>        static            int
+    <strong>GaussianEasterAlgorithm</strong>(<abbr title="intrawarez\feiertage\int">int</abbr> $X)
         </code>
     </h3>
     <div class="details">
@@ -548,7 +611,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td><abbr title="intrawarez\feiertage\int">int</abbr></td>
                 <td>$X</td>
                 <td>Year, e.g. 2015, 2016, etc.</td>
             </tr>
@@ -559,8 +622,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="intrawarez\feiertage\The">The</abbr></td>
-            <td>date of easter sunday as day of march, i.e. 32.March == 1.April</td>
+            <td>int</td>
+            <td>The date of easter sunday as day of march, i.e. 32.March == 1.April</td>
         </tr>
     </table>
 
@@ -571,10 +634,90 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at line         line 93</div>
-        <code>                    
-    <strong>__construct</strong>(int $jahr)
+                    <h3 id="method_jahr">
+        <div class="location">at line         line 76</div>
+        <code>        static            int
+    <strong>jahr</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets either the current year or the year of a given date.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a></td>
+                <td>$d</td>
+                <td>The given date.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>The year.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_of">
+        <div class="location">at line         line 99</div>
+        <code>        static            <a href="../../intrawarez/feiertage/Feiertage.html"><abbr title="intrawarez\feiertage\Feiertage">Feiertage</abbr></a>
+    <strong>of</strong>(int $jahr = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates a new Feiertage instance for a given year.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$jahr</td>
+                <td>The year.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../intrawarez/feiertage/Feiertage.html"><abbr title="intrawarez\feiertage\Feiertage">Feiertage</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_check">
+        <div class="location">at line         line 131</div>
+        <code>        static            boolean
+    <strong>check</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
         </code>
     </h3>
     <div class="details">
@@ -586,13 +729,22 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$jahr</td>
+                <td><a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a></td>
+                <td>$d</td>
                 <td></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -601,7 +753,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getJahr">
-        <div class="location">at line         line 163</div>
+        <div class="location">at line         line 243</div>
         <code>                    int
     <strong>getJahr</strong>()
         </code>
@@ -629,7 +781,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getNeujahrstag">
-        <div class="location">at line         line 172</div>
+        <div class="location">at line         line 251</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getNeujahrstag</strong>()
         </code>
@@ -657,7 +809,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getHeiligeDreiKoenige">
-        <div class="location">at line         line 181</div>
+        <div class="location">at line         line 259</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getHeiligeDreiKoenige</strong>()
         </code>
@@ -685,7 +837,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGruenDonnerstag">
-        <div class="location">at line         line 190</div>
+        <div class="location">at line         line 267</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getGruenDonnerstag</strong>()
         </code>
@@ -713,7 +865,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getKarFreitag">
-        <div class="location">at line         line 199</div>
+        <div class="location">at line         line 275</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getKarFreitag</strong>()
         </code>
@@ -741,7 +893,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getOsterSonntag">
-        <div class="location">at line         line 208</div>
+        <div class="location">at line         line 283</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getOsterSonntag</strong>()
         </code>
@@ -769,7 +921,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getOsterMontag">
-        <div class="location">at line         line 217</div>
+        <div class="location">at line         line 291</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getOsterMontag</strong>()
         </code>
@@ -797,7 +949,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTagDerArbeit">
-        <div class="location">at line         line 226</div>
+        <div class="location">at line         line 299</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getTagDerArbeit</strong>()
         </code>
@@ -825,7 +977,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getChristiHimmelfahrt">
-        <div class="location">at line         line 235</div>
+        <div class="location">at line         line 307</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getChristiHimmelfahrt</strong>()
         </code>
@@ -853,7 +1005,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getPfingstSonntag">
-        <div class="location">at line         line 244</div>
+        <div class="location">at line         line 315</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getPfingstSonntag</strong>()
         </code>
@@ -881,7 +1033,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getPfingstMontag">
-        <div class="location">at line         line 253</div>
+        <div class="location">at line         line 323</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getPfingstMontag</strong>()
         </code>
@@ -909,7 +1061,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getFronLeichnam">
-        <div class="location">at line         line 262</div>
+        <div class="location">at line         line 331</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getFronLeichnam</strong>()
         </code>
@@ -936,10 +1088,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getAugsburgertFriedensfest">
-        <div class="location">at line         line 271</div>
+                    <h3 id="method_getAugsburgerFriedensfest">
+        <div class="location">at line         line 339</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
-    <strong>getAugsburgertFriedensfest</strong>()
+    <strong>getAugsburgerFriedensfest</strong>()
         </code>
     </h3>
     <div class="details">
@@ -965,7 +1117,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getMariaeHimmelfahrt">
-        <div class="location">at line         line 280</div>
+        <div class="location">at line         line 347</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getMariaeHimmelfahrt</strong>()
         </code>
@@ -993,7 +1145,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTagDerDeutschenEinheit">
-        <div class="location">at line         line 289</div>
+        <div class="location">at line         line 355</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getTagDerDeutschenEinheit</strong>()
         </code>
@@ -1021,7 +1173,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getReformationstag">
-        <div class="location">at line         line 298</div>
+        <div class="location">at line         line 363</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getReformationstag</strong>()
         </code>
@@ -1049,7 +1201,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllerheiligen">
-        <div class="location">at line         line 307</div>
+        <div class="location">at line         line 371</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getAllerheiligen</strong>()
         </code>
@@ -1077,7 +1229,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getBussUndBettag">
-        <div class="location">at line         line 316</div>
+        <div class="location">at line         line 379</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getBussUndBettag</strong>()
         </code>
@@ -1105,7 +1257,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getErsterWeihnachtstag">
-        <div class="location">at line         line 325</div>
+        <div class="location">at line         line 387</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getErsterWeihnachtstag</strong>()
         </code>
@@ -1133,7 +1285,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getZweiterWeihnachtstag">
-        <div class="location">at line         line 334</div>
+        <div class="location">at line         line 395</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>getZweiterWeihnachtstag</strong>()
         </code>
@@ -1161,8 +1313,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at line         line 344</div>
-        <code>                    <abbr title="intrawarez\feiertage\multitype:DateTime">multitype:DateTime</abbr>
+        <div class="location">at line         line 403</div>
+        <code>                    <abbr title="intrawarez\feiertage\DateTime">DateTime</abbr>[]
     <strong>toArray</strong>()
         </code>
     </h3>
@@ -1176,7 +1328,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="intrawarez\feiertage\multitype:DateTime">multitype:DateTime</abbr></td>
+            <td><abbr title="intrawarez\feiertage\DateTime">DateTime</abbr>[]</td>
             <td></td>
         </tr>
     </table>
@@ -1188,10 +1340,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_check">
-        <div class="location">at line         line 373</div>
-        <code>                    
-    <strong>check</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
+                    <h3 id="method_contains">
+        <div class="location">at line         line 434</div>
+        <code>                    boolean
+    <strong>contains</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
         </code>
     </h3>
     <div class="details">
@@ -1210,6 +1362,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1218,8 +1379,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_which">
-        <div class="location">at line         line 389</div>
-        <code>                    
+        <div class="location">at line         line 452</div>
+        <code>                    <abbr title="intrawarez\feiertage\DateTime">DateTime</abbr>|string
     <strong>which</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $d)
         </code>
     </h3>
@@ -1239,6 +1400,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="intrawarez\feiertage\DateTime">DateTime</abbr>|string</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1246,10 +1416,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location">at line         line 409</div>
-        <code>                    string
-    <strong>__toString</strong>()
+                    <h3 id="method_getIterator">
+        <div class="location">at line         line 468</div>
+        <code>                    <a target="_blank" href="http://php.net/Iterator">Iterator</a>
+    <strong>getIterator</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1262,7 +1432,168 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td><a target="_blank" href="http://php.net/Iterator">Iterator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetExists">
+        <div class="location">at line         line 479</div>
+        <code>                    bool
+    <strong>offsetExists</strong>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="intrawarez\feiertage\unknown">unknown</abbr></td>
+                <td>$offset</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetGet">
+        <div class="location">at line         line 492</div>
+        <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
+    <strong>offsetGet</strong>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="intrawarez\feiertage\unknown">unknown</abbr></td>
+                <td>$offset</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetSet">
+        <div class="location">at line         line 507</div>
+        <code>                    bool
+    <strong>offsetSet</strong>(int $offset, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Not Supported!</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetUnset">
+        <div class="location">at line         line 521</div>
+        <code>                    bool
+    <strong>offsetUnset</strong>(int $offset)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Not Supported!</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
