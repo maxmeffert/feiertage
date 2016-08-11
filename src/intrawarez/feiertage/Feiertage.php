@@ -5,6 +5,7 @@ namespace intrawarez\feiertage;
 use intrawarez\sabertooth\optionals\OptionalInterface;
 use intrawarez\sabertooth\optionals\Optionals;
 
+
 /**
  * PHP class for german holidiays.
  * Computes movable holidays, i.e. christian holidays.
@@ -20,24 +21,121 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * ===========================================================
 	 */
 	
+	/**
+	 * Constant for the New Year's Day
+	 * @var integer
+	 */
 	const NEUJAHRSTAG = 0;
+	
+	/**
+	 * Constant for the Twelfth Day
+	 * @var integer
+	 */
 	const HEILIGEDREIKOENIGE = 1;
+	
+	/**
+	 * Constant for the Holy Thursday
+	 * @var integer
+	 */
 	const GRUENDONNERSTAG = 2;
+	
+	/**
+	 * Constant for the Good Friday
+	 * @var integer
+	 */
 	const KARFREITAG = 3;
+	
+	/**
+	 * Constant for the Easter Sunday
+	 * @var integer
+	 */
 	const OSTERSONNTAG = 4;
+	
+	/**
+	 * Constant for the Easter Monday
+	 * @var integer
+	 */
 	const OSTERMONTAG = 5;
+	
+	/**
+	 * Constant for the Labour Day
+	 * @var integer
+	 */
 	const TAGDERARBEIT = 6;
+	
+	/**
+	 * Constant for the Ascension Day
+	 * @var integer
+	 */
 	const CHRISTIHIMMELFAHRT = 7;
+	
+	/**
+	 * Constant for the Whit Sunday
+	 * @var integer
+	 */
 	const PFINGSTSONNTAG = 8;
+	
+	/**
+	 * Constant for the Whit Monday
+	 * @var integer
+	 */
 	const PFINGSTMONTAG = 9;
+	
+	/**
+	 * Constant for the Feast of Corpus Christi
+	 * @var integer
+	 */
 	const FRONLEICHNAM = 10;
+	
+	/**
+	 * Constant for the Augsburg's Feast of Peace
+	 * 
+	 * This is only a holiday for Augsburg city!
+	 *  
+	 * @var integer
+	 */
 	const AUGSBURGERFRIEDENSFEST = 11;
+	
+	/**
+	 * Constant for the Feast of the Assumption
+	 * @var integer
+	 */
 	const MARIAEHIMMELFAHRT = 12;
+	
+	/**
+	 * Constant for the German Unity Day
+	 * @var integer
+	 */
 	const TAGDERDEUTSCHENEINHEIT = 13;
+	
+	/**
+	 * Constant for the Reformation Day
+	 * @var integer
+	 */
 	const REFORMATIONSTAG = 14;
+	
+	/**
+	 * Constant for the All Saints' Day
+	 * @var integer
+	 */
 	const ALLERHEILIGEN = 15;
+	
+	/**
+	 * Constant for the Penance Day
+	 * @var integer
+	 */
 	const BUSSUNDBETTAG = 16;
+	
+	/**
+	 * Constant for the 1st Christmas Day
+	 * @var integer
+	 */
 	const ERSTERWEIHNACHTSTAG = 17;
+	
+	/**
+	 * Constant for the 2nd Christmas Day
+	 * @var integer
+	 */
 	const ZWEITERWEIHNACHTSTAG = 18;
 	
 	/* ===========================================================
@@ -52,7 +150,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @return int The year.
 	 */
 	static public function Jahr (\DateTimeInterface $d = null) : int {
-	
+		
 		if (is_null($d)) {
 				
 			$d = new \DateTime();
@@ -62,29 +160,36 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		return intval($d->format("Y"));
 	
 	}
+
+	/**
+	 * 
+	 * @param int $jahr
+	 * @return \DateTime
+	 */
+	static public function NeujahrsTag (int $jahr = null) : \DateTime {
+		
+		if (is_null($jahr)) {
+			$jahr = self::Jahr();
+		}
+		
+		return new \DateTime("$jahr-01-01");
+		
+		
+	}
 	
 	/**
-	 * The Gaussian Easter Algorithm (Gauss'sche Osterformel)
-	 *
-	 * @link http://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel
-	 * @param int $X Year, e.g. 2015, 2016, etc.
-	 * @return int The date of easter sunday as day of march, i.e. 32.March == 1.April
+	 * 
+	 * @param int $jahr
+	 * @return \DateTime
 	 */
-	static public function GaussianEasterAlgorithm(int $X) : int {
-		$X = intval ( $X );
+	static public function HeiligeDreiKoenige (int $jahr = null) : \DateTime {
 		
-		$K = intval ( $X / 100 );
-		$M = intval ( 15 + (3 * $K + 3) / 4 - (8 * $K + 13) / 25 );
-		$S = intval ( 2 - (3 * $K + 3) / 4 );
-		$A = intval ( $X % 19 );
-		$D = intval ( (19 * $A + $M) % 30 );
-		$R = intval ( ($D + $A / 11) / 29 );
-		$OG = intval ( 21 + $D - $R );
-		$SZ = intval ( 7 - ($X + $X / 4 + $S) % 7 );
-		$OE = intval ( 7 - ($OG - $SZ) % 7 );
-		$OS = intval ( $OG + $OE );
+		if (is_null($jahr)) {
+			$jahr = self::Jahr();
+		}
 		
-		return $OS;
+		return new \DateTime("$jahr-01-06");
+		
 	}
 	
 	/**
@@ -92,20 +197,9 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @param \DateTime $d
 	 * @return \DateTime
 	 */
-	static public function OsterSonntag ($jahr = null) : \DateTime {
+	static public function OsterSonntag (int $jahr = null) : \DateTime {
 		
-// 		$jahr = self::Jahr($d);
-		
-		$os = self::GaussianEasterAlgorithm($jahr);
-		$monat = 3;
-		
-		if (31 < $os) {
-				
-			$os = $os % 31;
-			$monat = 4;
-		}
-		
-		return new \DateTime("{$jahr}-{$monat}-{$os}");
+		return Easter::date($jahr);
 		
 	}
 	
@@ -115,9 +209,15 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @param bool $osterSonntag
 	 * @return \DateTime
 	 */
-	static public function OsterMontag (\DateTime $d = null, bool $osterSonntag = false) : \DateTime {
+	static public function OsterMontag (int $jahr = null, \DateTime $osterSonntag = null) : \DateTime {
 		
-		$osterMontag = !$osterSonntag ? self::OsterSonntag($d) : clone $d;
+		if (is_null($jahr)) {
+			
+			$jahr = self::Jahr();
+			
+		}
+		
+		$osterMontag = is_null($osterSonntag) ? self::OsterSonntag($jahr) : clone $osterSonntag;
 		$osterMontag->modify("+1 days");
 			
 		return $osterMontag;
@@ -129,7 +229,13 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @param int $jahr
 	 * @return \DateTime
 	 */
-	static public function BussUndBettag (int $jahr) : \DateTime {
+	static public function BussUndBettag (int $jahr = null) : \DateTime {
+		
+		if (is_null($jahr)) {
+			
+			$jahr = self::Jahr();
+			
+		}
 		
 		// For Buss-Und-Bettag compute the first wednesday before Nov 23.!
 		// init with 22, because 23 may be a wednesday
@@ -153,24 +259,14 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	/**
 	 * Creates a new Feiertage instance for a given year.
 	 * 
-	 * @param int|\DateTimeInterface $jahr The year.
+	 * @param int $jahr The year.
 	 * @return \intrawarez\feiertage\Feiertage
 	 */
-	static public function of ($jahr = null) : Feiertage {
+	static public function of (int $jahr = null) : Feiertage {
 		
 		if (is_null($jahr)) {
 			
 			$jahr = self::Jahr();
-			
-		}
-		elseif ($jahr instanceof \DateTimeInterface) {
-			
-			$jahr = self::Jahr($jahr);
-			
-		}
-		else {
-			
-			$jahr = intval($jahr);
 			
 		}
 		
@@ -222,9 +318,9 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 *
 	 * @param int $jahr        	
 	 */
-	private function __construct($jahr) {
+	private function __construct(int $jahr) {
 		
-		$this->jahr = intval ( $jahr );
+		$this->jahr = $jahr;
 		
 // 		$os = self::GaussianEasterAlgorithm ( $this->jahr );
 // 		$monat = 3;
@@ -241,9 +337,11 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		
 		$osterSonntag = self::OsterSonntag($this->jahr);
 				
-		$this->feiertage[self::NEUJAHRSTAG] = new \DateTime ( "{$this->jahr}-01-01" );
+// 		$this->feiertage[self::NEUJAHRSTAG] = new \DateTime ( "{$this->jahr}-01-01" );
+		$this->feiertage[self::NEUJAHRSTAG] = self::NeujahrsTag($jahr);
 		
-		$this->feiertage[self::HEILIGEDREIKOENIGE] = new \DateTime ( "{$this->jahr}-01-06" );
+// 		$this->feiertage[self::HEILIGEDREIKOENIGE] = new \DateTime ( "{$this->jahr}-01-06" );
+		$this->feiertage[self::HEILIGEDREIKOENIGE] = self::HeiligeDreiKoenige($jahr);
 		
 		$this->feiertage[self::GRUENDONNERSTAG] = clone ($osterSonntag);
 		$this->feiertage[self::GRUENDONNERSTAG]->modify ( "-3 days" );
@@ -253,7 +351,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		
 		$this->feiertage[self::OSTERSONNTAG] = clone ($osterSonntag);
 		
-		$this->feiertage[self::OSTERMONTAG] = self::OsterMontag($osterSonntag, true);
+		$this->feiertage[self::OSTERMONTAG] = self::OsterMontag($jahr, $osterSonntag);
 // 		$this->feiertage[self::OSTERMONTAG] = clone ($osterSonntag);
 // 		$this->feiertage[self::OSTERMONTAG]->modify ( "+1 days" );
 		
@@ -277,14 +375,16 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		$this->feiertage[self::REFORMATIONSTAG] = new \DateTime ( "{$this->jahr}-10-31" );
 		$this->feiertage[self::ALLERHEILIGEN] = new \DateTime ( "{$this->jahr}-11-01" );
 		
+		$this->feiertage[self::BUSSUNDBETTAG] = self::BussUndBettag($jahr);
+		
 		// For Buss-Und-Bettag compute the first wednesday before Nov 23.!
 		// init with 22, because 23 may be a wednesday
-		$this->feiertage[self::BUSSUNDBETTAG] = new \DateTime ( "{$this->jahr}-11-22" );
+// 		$this->feiertage[self::BUSSUNDBETTAG] = new \DateTime ( "{$this->jahr}-11-22" );
 		
-		while ( $this->feiertage[self::BUSSUNDBETTAG]->format ( "N" ) != 3 ) {
+// 		while ( $this->feiertage[self::BUSSUNDBETTAG]->format ( "N" ) != 3 ) {
 			
-			$this->feiertage[self::BUSSUNDBETTAG]->modify ( "-1 days" );
-		}
+// 			$this->feiertage[self::BUSSUNDBETTAG]->modify ( "-1 days" );
+// 		}
 		
 		$this->feiertage[self::ERSTERWEIHNACHTSTAG] = new \DateTime ( "{$this->jahr}-12-25" );
 		$this->feiertage[self::ZWEITERWEIHNACHTSTAG] = new \DateTime ( "{$this->jahr}-12-26" );

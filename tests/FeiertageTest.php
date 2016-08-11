@@ -7,9 +7,15 @@ use intrawarez\feiertage\Feiertage;
 
 class FeiertageTest extends TestCase {
 	
-	static private function easterDate (int $year) : DateTime {
+	/**
+	 * Gets easter sunday based on easter_date.
+	 * 
+	 * @param int $year
+	 * @return DateTime
+	 */
+	static private function easterSunday (int $year) : \DateTime {
 		
-		$easter = date_create(date("Y-m-d",easter_date(2016)));
+		$easter = date_create(date("Y-m-d",easter_date($year)));
 		$easter->modify("+1 days");
 		
 		return $easter;
@@ -19,16 +25,25 @@ class FeiertageTest extends TestCase {
 	public function testOsterSonntag () {
 
 		
-		$this->assertEquals(self::easterDate(2016), Feiertage::OsterSonntag(2016));
+// 		var_dump(Feiertage::GaussianEasterAlgorithm(2001));
+// 		var_dump(Feiertage::OsterSonntag(2001));
 		
+		
+		for ($year=2000; $year < 2038; $year++) {
+		
+// 			var_dump(Feiertage::GaussianEasterAlgorithm($year));
+			
+			$this->assertEquals(self::easterSunday($year), Feiertage::OsterSonntag($year));
+			
+		}
 		
 		// check upper limits of easter_date
 		
-		$easterDate = self::easterDate(2038);
-		$osterSonntag = Feiertage::OsterSonntag(2038);
+// 		$easterSunday = self::easterSunday(2038);
+// 		$osterSonntag = Feiertage::OsterSonntag(2038);
 				
-		$this->assertNotEquals($easterDate, $osterSonntag);
-		$this->assertEquals(date_create("2038-04-25"), $osterSonntag);
+// 		$this->assertNotEquals($easterSunday, $osterSonntag);
+// 		$this->assertEquals(date_create("2038-04-25"), $osterSonntag);
 		
 		
 	}
