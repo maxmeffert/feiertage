@@ -69,19 +69,51 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	
 	/**
 	 * 
-	 * @param \DateTimeInterface $d
+	 * @param Feiertag|\DateTimeInterface $date
 	 * @return boolean
 	 */
-	static public function check (\DateTimeInterface $d) : boolean {
+	static public function check ($date) : boolean {
 	
-		$jahr = intval($d->format("Y"));
+		if ($date instanceof Feiertag) {
+			
+			return true;
+			
+		}
+		elseif ($date instanceof \DateTimeInterface) {
 	
-		return Feiertage::of($jahr)->contains($d);
+			
+			return Feiertage::of(self::Jahr($date))->contains($d);
+			
+		}
+		
+		return false;	
 	
 	}
 	
+	/**
+	 * 
+	 * @param unknown $date
+	 * @return OptionalInterface
+	 */
+	static public function which ($date) : OptionalInterface {
+		
+		if ($date instanceof Feiertag) {
+				
+			return Optionals::Of($date->getKey());
+				
+		}
+		elseif ($date instanceof \DateTimeInterface) {
+			
+			return Feiertage::of(self::Jahr($date))->keyOf($date);
+				
+		}
+		
+		return Optionals::Absent();
+		
+	}
+	
 	/* ===========================================================
-	 * Instance Properties
+	 * Instance
 	 * ===========================================================
 	 */
 	
@@ -96,11 +128,6 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @var array
 	 */
 	private $feiertage = [];
-	
-	/* ===========================================================
-	 * Instance Constructor
-	 * ===========================================================
-	 */
 	
 	/**
 	 *
@@ -130,74 +157,31 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		$this->feiertage[Feiertag::ERSTERWEIHNACHTSTAG] = Feiertag::ErsterWeihnachtstag($jahr);
 		$this->feiertage[Feiertag::ZWEITERWEIHNACHTSTAG] = Feiertag::ZweiterWeihnachtstag($jahr);
 	}
-	
-	/* ===========================================================
-	 * Getter/Setter
-	 * ===========================================================
-	 */
-	
+		
 	/**
 	 *
 	 * @return int
 	 */
-	public function getJahr() {
+	public function getJahr() : int {
 		return $this->jahr;
 	}
-		
+	
 	/**
 	 *
-	 * @return DateTime[]
+	 * @return array
 	 */
-	public function toArray() {
-		
+	public function toArray() : array {
+	
 		$array = [];
-		
+	
 		foreach ($this->feiertage as $key => $value) {
-			
+				
 			$array[$key] = clone $value;
-			
+				
 		}
-		
+	
 		return $array;
-		
-	}
 	
-	/**
-	 * 
-	 * @param \DateTimeInterface $d
-	 * @return boolean
-	 */
-	public function contains (\DateTimeInterface $d) {
-		
-		foreach ( $this->toArray () as $h ) {
-			
-			if ($d == $h) {
-				
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @param \DateTimeInterface $d
-	 * @return OptionalInterface
-	 */
-	public function keyOf (\DateTimeInterface $d) : OptionalInterface {
-		
-		foreach ($this as $key => $h ) {
-			
-			if ($d == $h) {
-				
-				return Optionals::HardOptionalOf($key);
-				
-			}
-		}
-		
-		return Optionals::HardAbsent();
-		
 	}
 	
 	/**
@@ -265,6 +249,54 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		return false;
 		
 	}
+	
+	/**
+	 *
+	 * @param \DateTimeInterface $date
+	 * @return boolean
+	 */
+	public function contains (\DateTimeInterface $date) : bool {
+	
+		/**
+		 * @var Feiertag $f
+		 */
+	
+		foreach ($this as $f) {
+				
+			if ($f->getDate() == $date) {
+	
+				return true;
+			}
+		}
+	
+		return false;
+	
+	}
+	
+	/**
+	 *
+	 * @param \DateTimeInterface $date
+	 * @return OptionalInterface
+	 */
+	public function keyOf (\DateTimeInterface $date) : OptionalInterface {
+	
+		/**
+		 * @var Feiertag $f
+		 */
+		
+		foreach ($this as $key => $f ) {
+				
+			if ($f->getDate() == $date) {
+	
+				return Optionals::Of($key);
+	
+			}
+		}
+	
+		return Optionals::Absent();
+	
+	}
+	
 }
 
 ?>
