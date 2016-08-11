@@ -7,6 +7,9 @@ use intrawarez\feiertage\Feiertage;
 
 class FeiertageTest extends TestCase {
 	
+	/**
+	 * Tests holidays for 2016
+	 */
 	public function test2016 () {
 		
 		$ft = Feiertage::of(2016);
@@ -38,6 +41,9 @@ class FeiertageTest extends TestCase {
 				
 	}
 
+	/**
+	 * Tests if IteratorAggregate works properly
+	 */
 	public function testIteratorAggregate () {
 		
 		foreach (Feiertage::of(2016) as $key => $value) {
@@ -50,6 +56,9 @@ class FeiertageTest extends TestCase {
 		
 	}
 	
+	/**
+	 * Tests the immutability of a Feiertage instance
+	 */
 	public function testImmutability () {
 		
 		$ft = Feiertage::of(2016);
