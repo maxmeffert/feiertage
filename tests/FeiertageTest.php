@@ -7,6 +7,32 @@ use intrawarez\feiertage\Feiertage;
 
 class FeiertageTest extends TestCase {
 	
+	static private function easterDate (int $year) : DateTime {
+		
+		$easter = date_create(date("Y-m-d",easter_date(2016)));
+		$easter->modify("+1 days");
+		
+		return $easter;
+		
+	}
+	
+	public function testOsterSonntag () {
+
+		
+		$this->assertEquals(self::easterDate(2016), Feiertage::OsterSonntag(2016));
+		
+		
+		// check upper limits of easter_date
+		
+		$easterDate = self::easterDate(2038);
+		$osterSonntag = Feiertage::OsterSonntag(2038);
+				
+		$this->assertNotEquals($easterDate, $osterSonntag);
+		$this->assertEquals(date_create("2038-04-25"), $osterSonntag);
+		
+		
+	}
+	
 	/**
 	 * Tests holidays for 2016.
 	 * Also checks ArrayAccess implementation.

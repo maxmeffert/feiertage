@@ -92,9 +92,9 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @param \DateTime $d
 	 * @return \DateTime
 	 */
-	static public function OsterSonntag (\DateTime $d = null) : \DateTime {
+	static public function OsterSonntag ($jahr = null) : \DateTime {
 		
-		$jahr = self::Jahr($d);
+// 		$jahr = self::Jahr($d);
 		
 		$os = self::GaussianEasterAlgorithm($jahr);
 		$monat = 3;
@@ -239,7 +239,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 
 // 		var_dump(new \DateTime("$jahr-01-01"));
 		
-		$osterSonntag = self::OsterSonntag(new \DateTime("{$this->jahr}-01-01"));
+		$osterSonntag = self::OsterSonntag($this->jahr);
 				
 		$this->feiertage[self::NEUJAHRSTAG] = new \DateTime ( "{$this->jahr}-01-01" );
 		
@@ -360,8 +360,9 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 	
 	/**
+	 * Gets the iterator corresponding to the Feiertage instance.
 	 * 
-	 * @return \Iterator
+	 * @return \Iterator The Iterator
 	 */
 	public function getIterator () : \Iterator {
 		
@@ -370,9 +371,11 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 	
 	/**
+	 * Whether a date for a given offset exists.
+	 * A valid offset is one of the constants: Feiertage::NEUJAHRSTAGE, etc.
 	 * 
-	 * @param unknown $offset
-	 * @return bool
+	 * @param int $offset The given offset.
+	 * @return bool Whether the offset exists.
 	 */
 	public function offsetExists($offset) : bool {
 				
@@ -381,9 +384,11 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 	
 	/**
+	 * Gets the date for a given offset.
+	 * A valid offset is one of the constants: Feiertage::NEUJAHRSTAGE, etc.
 	 * 
-	 * @param unknown $offset
-	 * @return \DateTime
+	 * @param int $offset The given offset.
+	 * @return \DateTime The date mapped to the offset.
 	 */
 	public function offsetGet($offset) : \DateTime {
 		

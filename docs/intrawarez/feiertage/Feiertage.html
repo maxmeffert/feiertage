@@ -358,8 +358,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getIterator">getIterator</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Gets the iterator corresponding to the Feiertage instance.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -367,10 +366,9 @@
                     bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetExists">offsetExists</a>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+                    <a href="#method_offsetExists">offsetExists</a>(int $offset)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Whether a date for a given offset exists.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -378,10 +376,9 @@
                     <a target="_blank" href="http://php.net/DateTime">DateTime</a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetGet">offsetGet</a>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+                    <a href="#method_offsetGet">offsetGet</a>(int $offset)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Gets the date for a given offset.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -821,7 +818,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at line         line 366</div>
+        <div class="location">at line         line 367</div>
         <code>                    <a target="_blank" href="http://php.net/Iterator">Iterator</a>
     <strong>getIterator</strong>()
         </code>
@@ -830,6 +827,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Gets the iterator corresponding to the Feiertage instance.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -837,7 +836,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a target="_blank" href="http://php.net/Iterator">Iterator</a></td>
-            <td></td>
+            <td>The Iterator</td>
         </tr>
     </table>
 
@@ -849,23 +848,25 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at line         line 377</div>
+        <div class="location">at line         line 380</div>
         <code>                    bool
-    <strong>offsetExists</strong>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+    <strong>offsetExists</strong>(int $offset)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Whether a date for a given offset exists.</p>                    <p>A valid offset is one of the constants: Feiertage::NEUJAHRSTAGE, etc.</p>            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="intrawarez\feiertage\unknown">unknown</abbr></td>
+                <td>int</td>
                 <td>$offset</td>
-                <td></td>
+                <td>The given offset.</td>
             </tr>
             </table>
 
@@ -875,7 +876,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td>Whether the offset exists.</td>
         </tr>
     </table>
 
@@ -887,23 +888,25 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at line         line 388</div>
+        <div class="location">at line         line 393</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
-    <strong>offsetGet</strong>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $offset)
+    <strong>offsetGet</strong>(int $offset)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Gets the date for a given offset.</p>                    <p>A valid offset is one of the constants: Feiertage::NEUJAHRSTAGE, etc.</p>            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="intrawarez\feiertage\unknown">unknown</abbr></td>
+                <td>int</td>
                 <td>$offset</td>
-                <td></td>
+                <td>The given offset.</td>
             </tr>
             </table>
 
@@ -913,7 +916,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
-            <td></td>
+            <td>The date mapped to the offset.</td>
         </tr>
     </table>
 
@@ -925,7 +928,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at line         line 401</div>
+        <div class="location">at line         line 406</div>
         <code>                    bool
     <strong>offsetSet</strong>(int $offset, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $value)
         </code>
@@ -970,7 +973,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at line         line 415</div>
+        <div class="location">at line         line 420</div>
         <code>                    bool
     <strong>offsetUnset</strong>(int $offset)
         </code>
