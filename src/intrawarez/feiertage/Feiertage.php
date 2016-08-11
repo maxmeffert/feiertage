@@ -18,21 +18,27 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 */
 	
 	const FEIERTAG_NONE = - 1;
+	
 	const FEIERTAG_NEUJAHRSTAG = 0;
 	const FEIERTAG_HEILIGEDREIKOENIGE = 1;
 	const FEIERTAG_GRUENDONNERSTAG = 2;
+	
 	const FEIERTAG_KARFREITAG = 3;
 	const FEIERTAG_OSTERSONNTAG = 4;
 	const FEIERTAG_OSTERMONTAG = 5;
+	
 	const FEIERTAG_TAGDERARBEIT = 6;
 	const FEIERTAG_CHRISTIHIMMELFAHRT = 7;
 	const FEIERTAG_PFINGSTSONNTAG = 8;
+	
 	const FEIERTAG_PFINGATMONTAG = 9;
 	const FEIERTAG_FRONLEICHNAM = 10;
 	const FEIERTAG_AUGSBURGERFRIEDENSFEST = 11;
+	
 	const FEIERTAG_MARIAEHIMMELFAHRT = 12;
 	const FEIERTAG_TAGDERDEUTSCHENEINHEIT = 13;
 	const FEIERTAG_REFORMATIONSTAG = 14;
+	
 	const FEIERTAG_ALLERHEILIGEN = 15;
 	const FEIERTAG_BUSSUNDBETTAG = 16;
 	const FEIERTAG_ERSTERWEIHNACHTSTAG = 17;
@@ -232,7 +238,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 */
 	public function toArray() {
 		
-		return clone $this->feiertage;
+		return array_merge($this->feiertage, []);
 		
 	}
 	
@@ -298,7 +304,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @return \DateTime
 	 */
 	public function offsetGet($offset) : \DateTime {
-				
+		
 		return clone $this->feiertage[$offset];
 		
 	}
