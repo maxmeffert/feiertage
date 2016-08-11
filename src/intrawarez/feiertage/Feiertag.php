@@ -3,6 +3,9 @@
 namespace intrawarez\feiertage;
 
 /**
+ * Represents a single legal holiday in Germany.
+ * 
+ * Computes the date of a single legal holiday in Germany for a given year.
  * 
  * @author maxmeffert
  *

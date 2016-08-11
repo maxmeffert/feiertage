@@ -7,8 +7,8 @@ use intrawarez\sabertooth\optionals\Optionals;
 
 
 /**
- * PHP class for german holidiays.
- * Computes movable holidays, i.e. christian holidays.
+ * PHP7 class for legal holidiays in Germany.
+ * Computes movable holidays, i.e. christian holidays, with the *Gaussian Easter Algorithm*.
  *
  * @author maxmeffert
  * @link https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
