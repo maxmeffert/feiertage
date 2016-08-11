@@ -2,6 +2,10 @@
 
 namespace intrawarez\feiertage;
 
+use intrawarez\sabertooth\optionals\OptionalInterface;
+use intrawarez\sabertooth\optionals\HardOptional;
+use intrawarez\sabertooth\optionals\Optionals;
+
 /**
  * PHP Helper class for german holidiays.
  * Computes movable holidays, i.e. christian holidays.
@@ -265,16 +269,19 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @param \DateTimeInterface $d
 	 * @return \intrawarez\feiertage\DateTime|string
 	 */
-	public function which(\DateTimeInterface $d) {
+	public function which (\DateTimeInterface $d) : OptionalInterface {
+		
 		foreach ( $this->toArray () as $which => $h ) {
 			
 			if ($d == $h) {
 				
-				return $which;
+				return Optionals::HardOptionalOf($which);
+				
 			}
 		}
 		
-		return self::FEIERTAG_NONE;
+		return Optionals::HardAbsent();
+		
 	}
 	
 	/**

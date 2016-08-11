@@ -1,6 +1,6 @@
 {
     "name": "intrawarez/feiertage",
-    "description": "PHP Helper class to compute german (movable) holidiays, i.e. christian holidays",
+    "description": "PHP7 class for german holidiays",
     "authors": [
         {
             "name": "Maximilian Meffert",
@@ -21,7 +21,8 @@
     },
     "require": {
     	
-        "php": ">=7"
+        "php": ">=7",
+        "intrawarez/sabertooth": "*"
         
     }
 }

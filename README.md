@@ -1,7 +1,8 @@
 # feiertage
 
 PHP Helper class to compute german (movable) holidiays, i.e. christian holidays.
-The computation is based on the [Gaussian Easter Algorithm](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel).
+
+The computation is based on the [Gaussian Easter Algorithm](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel) which computes easter sunday as "fix point" for further date derivations.
 
 ## Installation
 
