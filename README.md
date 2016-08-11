@@ -4,7 +4,7 @@ A PHP7 utility for **legal holidiays in Germany**.
 
 - Computes all 19 legal holidays in Germany for a given year.
 - Not limited to unix years, i.e. before 1970 or after 2037 (**does not rely on [```easter_date```](http://php.net/manual/en/function.easter-date.php)**).
-- Tested for years: from 1700 to 2299
+- Tested for years: from 1700 to 2299.
 
 ## Installation
 

@@ -144,70 +144,155 @@ class Feiertag {
 	 * ===========================================================
 	 */
 	
+	/**
+	 * Factory Method for <b>New Year's Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function Neujahrstag (int $jahr) : Feiertag {
 		return new Feiertag(self::NEUJAHRSTAG, new \DateTimeImmutable("$jahr-01-01"));
 	}
 	
+	/**
+	 * Factory Method for <b>Twelfth Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function HeiligeDreiKoenige (int $jahr) : Feiertag {
 		return new Feiertag(self::HEILIGEDREIKOENIGE, new \DateTimeImmutable("$jahr-01-06")); 
 	}
 	
+	/**
+	 * Factory Method for <b>Holy Thursday</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function GruenDonnerstag (int $jahr) : Feiertag {
 		return new Feiertag(self::GRUENDONNERSTAG, Easter::date($jahr)->modify("-3 days"));
 	}
 	
+	/**
+	 * Factory Method for <b>Good Friday</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function Karfreitag (int $jahr) : Feiertag {
 		return new Feiertag(self::KARFREITAG, Easter::date($jahr)->modify("-2 days"));
 	}
 	
+	/**
+	 * Factory Method for <b>Easter Sunday</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function OsterSonntag (int $jahr) : Feiertag {
 		return new Feiertag(self::OSTERSONNTAG, Easter::date($jahr));
 	}
 	
+	/**
+	 * Factory Method for <b>Easter Monday</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function OsterMontag (int $jahr) : Feiertag {
 		return new Feiertag(self::OSTERMONTAG, Easter::date($jahr)->modify("+1 days"));
 	}
 	
+	/**
+	 * Factory Method for <b>Labour Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function TagDerArbeit (int $jahr) : Feiertag {
 		return new Feiertag(self::TAGDERARBEIT, new \DateTimeImmutable("$jahr-05-01"));
 	}
 	
+	/**
+	 * Factory Method for <b>Ascension Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function ChristiHimmelfahrt (int $jahr) : Feiertag {
 		return new Feiertag(self::CHRISTIHIMMELFAHRT, Easter::date($jahr)->modify("+39 days"));
 	}
 	
+	/**
+	 * Factory Method for <b>Whit Sunday</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function PfingstSonntag (int $jahr) : Feiertag {
 		return new Feiertag(self::PFINGSTSONNTAG, Easter::date($jahr)->modify("+49 days"));
 	}
 	
+	/**
+	 * Factory Method for <b>Whit Monday</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function PfingstMontag (int $jahr) : Feiertag {
 		return new Feiertag(self::PFINGSTMONTAG, Easter::date($jahr)->modify("+50 days"));
 	}
 	
+	/**
+	 * Factory Method for <b>Feast of Corpus Christi</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function Fronleichnam (int $jahr) : Feiertag {
 		return new Feiertag(self::FRONLEICHNAM, Easter::date($jahr)->modify("+60 days"));
 	}
 	
+	/**
+	 * Factory Method for <b>Augsburg's Feast of Peace</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function AugsburgerFriedensfest (int $jahr) : Feiertag {
 		return new Feiertag(self::AUGSBURGERFRIEDENSFEST, new \DateTimeImmutable("$jahr-08-08"));
 	}
 
+	/**
+	 * Factory Method for <b>Feast of the Assumption</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function MariaeHimmelfahrt (int $jahr) : Feiertag {
 		return new Feiertag(self::MARIAEHIMMELFAHRT, new \DateTimeImmutable("$jahr-08-15"));
 	}
 
+	/**
+	 * Factory Method for <b>German Unity Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function TagDerDeutschenEinheit (int $jahr) : Feiertag {
 		return new Feiertag(self::TAGDERDEUTSCHENEINHEIT, new \DateTimeImmutable("$jahr-10-03"));
 	}
 
+	/**
+	 * Factory Method for <b>Reformation Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function Reformationstag (int $jahr) : Feiertag {
 		return new Feiertag(self::REFORMATIONSTAG, new \DateTimeImmutable("$jahr-10-31"));
 	}
 
+	/**
+	 * Factory Method for <b>All Saints' Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function Allerheiligen (int $jahr) : Feiertag {
 		return new Feiertag(self::ALLERHEILIGEN, new \DateTimeImmutable("$jahr-11-01"));
 	}
 
+	/**
+	 * Factory Method for <b>Penance Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function BussUndBettag (int $jahr) : Feiertag {
 		
 		// For Buss-Und-Bettag compute the first wednesday before Nov 23.!
@@ -224,10 +309,20 @@ class Feiertag {
 		
 	}
 
+	/**
+	 * Factory Method for <b>1st Christmas Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function ErsterWeihnachtstag (int $jahr) : Feiertag {
 		return new Feiertag(self::ERSTERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-25"));
 	}
 
+	/**
+	 * Factory Method for <b>2nd Christmas Day</b> of a given year.
+	 * @param int $jahr The given year.
+	 * @return Feiertag
+	 */
 	static public function ZweiterWeihnachtstag (int $jahr) : Feiertag {
 		return new Feiertag(self::ZWEITERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-26"));
 	}
