@@ -156,6 +156,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		$this->feiertage[Feiertag::BUSSUNDBETTAG] = Feiertag::BussUndBettag($jahr);
 		$this->feiertage[Feiertag::ERSTERWEIHNACHTSTAG] = Feiertag::ErsterWeihnachtstag($jahr);
 		$this->feiertage[Feiertag::ZWEITERWEIHNACHTSTAG] = Feiertag::ZweiterWeihnachtstag($jahr);
+		
 	}
 		
 	/**

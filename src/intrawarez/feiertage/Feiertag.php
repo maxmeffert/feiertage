@@ -210,6 +210,8 @@ class Feiertag {
 
 	static public function BussUndBettag (int $jahr) : Feiertag {
 		
+		// For Buss-Und-Bettag compute the first wednesday before Nov 23.!
+		// init with 22, because 23 may be a wednesday
 		$date = new \DateTimeImmutable("$jahr-11-22");
 		
 		while ($date->format("N") != 3) {
