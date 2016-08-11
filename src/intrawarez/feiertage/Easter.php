@@ -91,7 +91,7 @@ abstract class Easter {
 	 * @param int $year The given year.
 	 * @return \DateTime The date of <b>Easter Sunday</b> for the given year.
 	 */
-	static public function date (int $year) : \DateTime {
+	static public function date (int $year) : \DateTimeImmutable {
 		
 		$os = self::gauss($year);
 		
@@ -104,7 +104,7 @@ abstract class Easter {
 		
 		}
 		
-		return new \DateTime("{$year}-{$monat}-{$os}");
+		return new \DateTimeImmutable("{$year}-{$monat}-{$os}");
 		
 	}
 	
