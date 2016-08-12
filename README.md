@@ -3,6 +3,7 @@
 A PHP7 utility for **legal holidiays in Germany**.
 
 - Computes all 19 legal holidays in Germany for a given year.
+- Based on the **[Gaussian Easter Formula](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel)**
 - Not limited to unix years, i.e. before 1970 or after 2037 (**does not rely on [```easter_date```](http://php.net/manual/en/function.easter-date.php)**).
 - Tested for years: from 1700 to 2299.
 
@@ -66,11 +67,11 @@ foreach (Feiertage::of(2016) as $holiday) {
 ## Dynamic Holidays
 As for most western countries, all dynamic legal holidays in Germany are christian feasts, which are organized around **Easter Sunday**.
 That's why functions like [```easter_date```](http://php.net/manual/en/function.easter-date.php) exist.
-However ```easter_date``` is limited to unix years, i.e. before 1970 or after 2037.
-Instead of relying on ```easter_date``` this implementation is based on the [*Gaussian Easter Algorithm*](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel), which is not limited to unix years. 
-The *Gaussian Easter Algorithm* computes Easter Sunday for a given year as a day of march, e.g. 32th March == 1st April.
+However [```easter_date```](http://php.net/manual/en/function.easter-date.php) is limited to unix years, i.e. before 1970 or after 2037.
+Instead of relying on [```easter_date```](http://php.net/manual/en/function.easter-date.php) this implementation is based on the *[Gaussian Easter Formula](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel)*, which is not limited to unix years. 
+The *[Gaussian Easter Formula](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel)* computes Easter Sunday for a given year as a day of march, e.g. the 32th March is the 1st April, the 33rd March is the 2nd April, etc.
 
-The implementation of the *Gaussian Easter Algorithm* used by this library looks like this:
+The implementation of the *[Gaussian Easter Formula](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel)* used by this library looks like this:
 ```php
 function div (int $a, int $b) : int {
 
@@ -115,18 +116,18 @@ function gauss (int $year) : int {
 
 function easterSunday (int $year) : \DateTimeImmutable {
 		
-	$os = gauss($year);
+	$day = gauss($year);
 	
-	$monat = 3;
+	$month = 3;
 	
 	if (31 < $os) {
 	
-		$os = $os % 31;
-		$monat = 4;
+		$day = mod($os, 31);
+		$month = 4;
 	
 	}
 	
-	return new \DateTimeImmutable("{$year}-{$monat}-{$os}");
+	return new \DateTimeImmutable("{$year}-{$month}-{$day}");
 	
 }
 ```
@@ -139,7 +140,7 @@ Other reference implementations can be found here:
 
 The MIT License (MIT)
 
-Copyright (c) <year> <copyright holders>
+Copyright (c) 2016 Maximilian Meffert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
