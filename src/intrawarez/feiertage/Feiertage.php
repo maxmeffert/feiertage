@@ -7,7 +7,7 @@ use intrawarez\sabertooth\optionals\Optionals;
 
 
 /**
- * PHP7 class for legal holidiays in Germany.
+ * Represents all 19 legal holidiays in Germany for a given year.
  * Computes movable holidays, i.e. christian holidays, with the *Gaussian Easter Algorithm*.
  *
  * @author maxmeffert
@@ -68,21 +68,25 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 */
 	
 	/**
+	 * Whether the givent object is a holiday.
 	 * 
-	 * @param Feiertag|\DateTimeInterface $date
+	 * Returns <b>true</b> if the given object is a Feiertag instance,
+	 * or if the given object is a \DateTimeInterface and a holiday in its respective year.
+	 * 
+	 * @param object $date The given object.
 	 * @return boolean
 	 */
-	static public function check ($date) : boolean {
+	static public function check ($object) : boolean {
 	
-		if ($date instanceof Feiertag) {
+		if ($object instanceof Feiertag) {
 			
 			return true;
 			
 		}
-		elseif ($date instanceof \DateTimeInterface) {
+		elseif ($object instanceof \DateTimeInterface) {
 	
 			
-			return Feiertage::of(self::Jahr($date))->contains($d);
+			return Feiertage::of(self::Jahr($object))->contains($object);
 			
 		}
 		
@@ -91,20 +95,21 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 	
 	/**
+	 * May return the Feiertag instance of a given object.
 	 * 
-	 * @param unknown $date
+	 * @param object $date
 	 * @return OptionalInterface
 	 */
-	static public function which ($date) : OptionalInterface {
+	static public function which ($object) : OptionalInterface {
 		
 		if ($date instanceof Feiertag) {
 				
-			return Optionals::Of($date->getKey());
+			return Optionals::Of($date);
 				
 		}
 		elseif ($date instanceof \DateTimeInterface) {
 			
-			return Feiertage::of(self::Jahr($date))->keyOf($date);
+			return Feiertage::of(clone self::Jahr($date))->get($date);
 				
 		}
 		
@@ -160,7 +165,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 		
 	/**
-	 *
+	 * Gets the year of the holidays.
 	 * @return int
 	 */
 	public function getJahr() : int {
@@ -168,8 +173,9 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 	
 	/**
-	 *
-	 * @return array
+	 * Gets the array copy of all holidays.
+	 * 
+	 * @return array The array of all Feiertag instance clones.
 	 */
 	public function toArray() : array {
 	
@@ -184,6 +190,50 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		return $array;
 	
 	}
+	
+	/**
+	 * Gets the array of dates of all hollidays.
+	 * 
+	 * @return array The Array of \DateTimeInterface instances.
+	 */
+	public function getDates () : array {
+		
+		return array_map(function(Feiertag $f){
+			
+			return $f->getDate();
+			
+		}, $this->toArray());
+		
+	}
+	/**
+	 * Gets the array of dates of all hollidays.
+	 *
+	 * @return array The Array of \DateTime instances.
+	 */
+	public function toDateTimes () : array {
+		
+		return array_map(function(Feiertag $f){
+				
+			return $f->toDateTime();
+				
+		}, $this->toArray());
+		
+	}
+	/**
+	 * Gets the array of dates of all hollidays.
+	 *
+	 * @return array The Array of \DateTimeImmutable instances.
+	 */
+	public function toDateTimeImmutables () : array {
+		
+		return array_map(function(Feiertag $f){
+				
+			return $f->toDateTimeImmutable();
+				
+		}, $this->toArray());
+		
+	}
+	
 	
 	/**
 	 * Gets the iterator corresponding to the Feiertage instance.
@@ -223,7 +273,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 	
 	/**
-	 * Not Supported!
+	 * Not Supported! Feiertage ist immutable.
 	 * 
 	 * @param int $offset
 	 * @param \DateTime $value
@@ -231,29 +281,26 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 */
 	public function offsetSet($offset, $value) : bool {
 		
-// 		throw new \Exception("This Method is not supported!");
-		
 		return false;
 		
 	}
 	
 	/**
-	 * Not Supported!
+	 * Not Supported! Feiertage ist immutable.
 	 * 
 	 * @param int $offset
 	 * @return bool
 	 */
 	public function offsetUnset($offset) : bool {
 		
-// 		throw new \Exception("This Method is not supported!");
-		
 		return false;
 		
 	}
 	
 	/**
-	 *
-	 * @param \DateTimeInterface $date
+	 * Whether a given date is a holliday in this Fiertage instance.
+	 * 
+	 * @param \DateTimeInterface $date The given date.
 	 * @return boolean
 	 */
 	public function contains (\DateTimeInterface $date) : bool {
@@ -275,11 +322,12 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	}
 	
 	/**
-	 *
-	 * @param \DateTimeInterface $date
-	 * @return OptionalInterface
+	 * May get the Feiertag instance of a given date.
+	 *  
+	 * @param \DateTimeInterface $date The given date.
+	 * @return OptionalInterface The optional Feiertag instance.
 	 */
-	public function keyOf (\DateTimeInterface $date) : OptionalInterface {
+	public function get (\DateTimeInterface $date) : OptionalInterface {
 	
 		/**
 		 * @var Feiertag $f
@@ -289,7 +337,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 				
 			if ($f->getDate() == $date) {
 	
-				return Optionals::Of($key);
+				return Optionals::Of(clone $f);
 	
 			}
 		}

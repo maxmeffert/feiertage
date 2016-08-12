@@ -13,78 +13,78 @@ namespace intrawarez\feiertage;
 class Feiertag {
 	
 	/* ===========================================================
-	 * Constants
+	 * "Keys"
 	 * ===========================================================
 	 */
 	
 	/**
-	 * Constant for the New Year's Day
+	 * "Key" for the <b>New Year's Day</b>
 	 * @var integer
 	 */
 	const NEUJAHRSTAG = 0;
 	
 	/**
-	 * Constant for the Twelfth Day
+	 * "Key" for the <b>Twelfth Day</b>
 	 * @var integer
 	 */
 	const HEILIGEDREIKOENIGE = 1;
 	
 	/**
-	 * Constant for the Holy Thursday
+	 * "Key" for the <b>Holy Thursday</b>
 	 * @var integer
 	 */
 	const GRUENDONNERSTAG = 2;
 	
 	/**
-	 * Constant for the Good Friday
+	 * "Key" for the <b>Good Friday</b>
 	 * @var integer
 	 */
 	const KARFREITAG = 3;
 	
 	/**
-	 * Constant for the Easter Sunday
+	 * "Key" for the <b>Easter Sunday</b>
 	 * @var integer
 	 */
 	const OSTERSONNTAG = 4;
 	
 	/**
-	 * Constant for the Easter Monday
+	 * "Key" for the <b>Easter Monday</b>
 	 * @var integer
 	 */
 	const OSTERMONTAG = 5;
 	
 	/**
-	 * Constant for the Labour Day
+	 * "Key" for the <b>Labour Day</b>
 	 * @var integer
 	 */
 	const TAGDERARBEIT = 6;
 	
 	/**
-	 * Constant for the Ascension Day
+	 * "Key" for the <b>Ascension Day</b>
 	 * @var integer
 	 */
 	const CHRISTIHIMMELFAHRT = 7;
 	
 	/**
-	 * Constant for the Whit Sunday
+	 * "Key" for the <b>Whit Sunday</b>
 	 * @var integer
 	 */
 	const PFINGSTSONNTAG = 8;
 	
 	/**
-	 * Constant for the Whit Monday
+	 * "Key" for the <b>Whit Monday</b>
 	 * @var integer
 	 */
 	const PFINGSTMONTAG = 9;
 	
 	/**
-	 * Constant for the Feast of Corpus Christi
+	 * "Key" for the <b>Feast of Corpus Christi</b>
 	 * @var integer
 	 */
 	const FRONLEICHNAM = 10;
 	
 	/**
-	 * Constant for the Augsburg's Feast of Peace
+	 * "Key" for the <b>Augsburg's Feast of Peace</b>
 	 *
 	 * This is only a holiday for Augsburg city!
 	 *
@@ -93,47 +93,52 @@ class Feiertag {
 	const AUGSBURGERFRIEDENSFEST = 11;
 	
 	/**
-	 * Constant for the Feast of the Assumption
+	 * "Key" for the <b>Feast of the Assumption</b>
 	 * @var integer
 	 */
 	const MARIAEHIMMELFAHRT = 12;
 	
 	/**
-	 * Constant for the German Unity Day
+	 * "Key" for the <b>German Unity Day</b>
 	 * @var integer
 	 */
 	const TAGDERDEUTSCHENEINHEIT = 13;
 	
 	/**
-	 * Constant for the Reformation Day
+	 * "Key" for the <b>Reformation Day</b>
 	 * @var integer
 	 */
 	const REFORMATIONSTAG = 14;
 	
 	/**
-	 * Constant for the All Saints' Day
+	 * "Key" for the <b>All Saints' Day</b>
 	 * @var integer
 	 */
 	const ALLERHEILIGEN = 15;
 	
 	/**
-	 * Constant for the Penance Day
+	 * "Key" for the <b>Penance Day</b>
 	 * @var integer
 	 */
 	const BUSSUNDBETTAG = 16;
 	
 	/**
-	 * Constant for the 1st Christmas Day
+	 * "Key" for the <b>1st Christmas Day</b>
 	 * @var integer
 	 */
 	const ERSTERWEIHNACHTSTAG = 17;
 	
 	/**
-	 * Constant for the 2nd Christmas Day
+	 * "Key" for the <b>2nd Christmas Day</b>
 	 * @var integer
 	 */
 	const ZWEITERWEIHNACHTSTAG = 18;
 	
+	/**
+	 * Gets the array of all valid "keys" with their names as indeces.
+	 * 
+	 * @return array The array "keys" with their names as indeces.
+	 */
 	static public function keys () : array {
 		
 		$class = new \ReflectionClass(self::class);
@@ -248,6 +253,9 @@ class Feiertag {
 	
 	/**
 	 * Factory Method for <b>Augsburg's Feast of Peace</b> of a given year.
+	 *
+	 * This is only a holiday for Augsburg city!
+	 * 
 	 * @param int $jahr The given year.
 	 * @return Feiertag
 	 */
@@ -336,17 +344,23 @@ class Feiertag {
 	 */	
 
 	/**
-	 * 
+	 * The "key".
 	 * @var int
 	 */
 	private $key;
 	
 	/**
-	 * 
+	 * The date.
 	 * @var \DateTimeInterface
 	 */
 	private $date;
 	
+	/**
+	 * Constructs a new Feiertag instance from a given "key" and a given date.
+	 * 
+	 * @param int $key The "key".
+	 * @param \DateTimeInterface $date The date.
+	 */
 	private function __construct (int $key, \DateTimeInterface $date) {
 
 		$this->key = $key;
@@ -354,47 +368,88 @@ class Feiertag {
 				
 	}
 	
+	/**
+	 * Gets the underlying date object.
+	 * 
+	 * @return \DateTimeInterface
+	 */
 	public function getDate () : \DateTimeInterface {
 		
 		return clone $this->date;
 		
 	}
 	
+	/**
+	 * Gets the "key" of the Feiertag instance.
+	 * 
+	 * This is one of the constants of the Feiertag class.
+	 *  
+	 * @return int The "key".
+	 */
 	public function getKey () : int {
 		
 		return $this->key;
 		
 	}
 	
+	/**
+	 * Returns the timezone offset of the underlying date.
+	 * 
+	 * @return int The timezone offset.
+	 */
 	public function getOffset () : int {
 		
 		return $this->date->getOffset();
 		
 	}
 	
+	/**
+	 * Gets the Unix timestamp of the underlying date.
+	 * 
+	 * @return int The Unix timestamp.
+	 */
 	public function getTimestamp () : int {
 		
 		return $this->date->getTimestamp();
 		
 	}
 	
+	/**
+	 * Returns the timezone relative to the underlying date.
+	 * 
+	 * @return \DateTimeZone The timezone.
+	 */
 	public function getTimezone () : \DateTimeZone {
 		
 		return $this->date->getTimezone();
 	}
 	
+	/**
+	 * Returns the underlying date formatted according to given format.
+	 * 
+	 * @param string $format The given format.
+	 * @return string The formated date.
+	 */
 	public function format (string $format) : string {
 		
 		return $this->date->format($format);
 		
 	}
 	
+	/**
+	 * Creates a corresponding DateTime instance for this Feiertag object
+	 * @return \DateTime
+	 */
 	public function toDateTime () : \DateTime {
 		
 		return new \DateTime($this->format(\DateTime::ATOM), $this->getTimezone());
 		
 	}
 	
+	/**
+	 * Creates a corresponding DateTimeImmutable instance for this Feiertag object.
+	 * @return \DateTimeImmutable
+	 */
 	public function toDateTimeImmutable () : \DateTimeImmutable {
 		
 		return new \DateTimeImmutable($this->format(\DateTime::ATOM), $this->getTimezone());

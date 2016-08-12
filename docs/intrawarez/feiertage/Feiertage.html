@@ -87,7 +87,7 @@
     
 
             <div class="description">
-            <p>PHP class for german holidiays.</p>            <p>Computes movable holidays, i.e. christian holidays.</p>        </div>
+            <p>Represents all 19 legal holidiays in Germany for a given year.</p>            <p>Computes movable holidays, i.e. christian holidays, with the <em>Gaussian Easter Algorithm</em>.</p>        </div>
     
     
     
@@ -120,10 +120,9 @@
                     static&nbsp;boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_check">check</a>(<a href="../../intrawarez/feiertage/Feiertag.html"><abbr title="intrawarez\feiertage\Feiertag">Feiertag</abbr></a>|<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
+                    <a href="#method_check">check</a>($object)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Whether the givent object is a holiday.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -131,10 +130,9 @@
                     static&nbsp;<abbr title="intrawarez\sabertooth\optionals\OptionalInterface">OptionalInterface</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_which">which</a>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $date)
+                    <a href="#method_which">which</a>($object)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>May return the Feiertag instance of a given object.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -144,8 +142,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getJahr">getJahr</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Gets the year of the holidays.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -155,8 +152,37 @@
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Gets the array copy of all holidays.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDates">getDates</a>()
+        
+                                            <p>Gets the array of dates of all hollidays.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_toDateTimes">toDateTimes</a>()
+        
+                                            <p>Gets the array of dates of all hollidays.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_toDateTimeImmutables">toDateTimeImmutables</a>()
+        
+                                            <p>Gets the array of dates of all hollidays.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -196,7 +222,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_offsetSet">offsetSet</a>(int $offset, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $value)
         
-                                            <p>Not Supported!</p>                </div>
+                                            <p>Not Supported! Feiertage ist immutable.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -206,7 +232,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_offsetUnset">offsetUnset</a>(int $offset)
         
-                                            <p>Not Supported!</p>                </div>
+                                            <p>Not Supported! Feiertage ist immutable.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -216,8 +242,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_contains">contains</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Whether a given date is a holliday in this Fiertage instance.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -225,10 +250,9 @@
                     <abbr title="intrawarez\sabertooth\optionals\OptionalInterface">OptionalInterface</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_keyOf">keyOf</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
+                    <a href="#method_get">get</a>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>May get the Feiertag instance of a given date.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -319,22 +343,25 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_check">
-        <div class="location">at line         line 75</div>
+        <div class="location">at line         line 79</div>
         <code>        static            boolean
-    <strong>check</strong>(<a href="../../intrawarez/feiertage/Feiertag.html"><abbr title="intrawarez\feiertage\Feiertag">Feiertag</abbr></a>|<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
+    <strong>check</strong>($object)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Whether the givent object is a holiday.</p>                    <p>Returns <b>true</b> if the given object is a Feiertag instance,
+or if the given object is a \DateTimeInterface and a holiday in its respective year.</p>            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../intrawarez/feiertage/Feiertag.html"><abbr title="intrawarez\feiertage\Feiertag">Feiertag</abbr></a>|<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a></td>
-                <td>$date</td>
+                <td></td>
+                <td>$object</td>
                 <td></td>
             </tr>
             </table>
@@ -357,22 +384,24 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_which">
-        <div class="location">at line         line 98</div>
+        <div class="location">at line         line 103</div>
         <code>        static            <abbr title="intrawarez\sabertooth\optionals\OptionalInterface">OptionalInterface</abbr>
-    <strong>which</strong>(<abbr title="intrawarez\feiertage\unknown">unknown</abbr> $date)
+    <strong>which</strong>($object)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>May return the Feiertag instance of a given object.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="intrawarez\feiertage\unknown">unknown</abbr></td>
-                <td>$date</td>
+                <td></td>
+                <td>$object</td>
                 <td></td>
             </tr>
             </table>
@@ -395,7 +424,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getJahr">
-        <div class="location">at line         line 166</div>
+        <div class="location">at line         line 171</div>
         <code>                    int
     <strong>getJahr</strong>()
         </code>
@@ -404,6 +433,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Gets the year of the holidays.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -423,7 +454,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at line         line 174</div>
+        <div class="location">at line         line 180</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -432,6 +463,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Gets the array copy of all holidays.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -439,7 +472,97 @@
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td></td>
+            <td>The array of all Feiertag instance clones.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDates">
+        <div class="location">at line         line 199</div>
+        <code>                    array
+    <strong>getDates</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets the array of dates of all hollidays.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>The Array of \DateTimeInterface instances.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toDateTimes">
+        <div class="location">at line         line 213</div>
+        <code>                    array
+    <strong>toDateTimes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets the array of dates of all hollidays.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>The Array of \DateTime instances.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toDateTimeImmutables">
+        <div class="location">at line         line 227</div>
+        <code>                    array
+    <strong>toDateTimeImmutables</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets the array of dates of all hollidays.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>The Array of \DateTimeImmutable instances.</td>
         </tr>
     </table>
 
@@ -451,7 +574,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at line         line 193</div>
+        <div class="location">at line         line 243</div>
         <code>                    <a target="_blank" href="http://php.net/Iterator">Iterator</a>
     <strong>getIterator</strong>()
         </code>
@@ -481,7 +604,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at line         line 206</div>
+        <div class="location">at line         line 256</div>
         <code>                    bool
     <strong>offsetExists</strong>(int $offset)
         </code>
@@ -521,7 +644,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at line         line 219</div>
+        <div class="location">at line         line 269</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>
     <strong>offsetGet</strong>(int $offset)
         </code>
@@ -561,7 +684,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at line         line 232</div>
+        <div class="location">at line         line 282</div>
         <code>                    bool
     <strong>offsetSet</strong>(int $offset, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $value)
         </code>
@@ -571,7 +694,7 @@
     
 
                     <div class="method-description">
-                                    <p>Not Supported!</p>                                </div>
+                                    <p>Not Supported! Feiertage ist immutable.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -606,7 +729,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at line         line 246</div>
+        <div class="location">at line         line 294</div>
         <code>                    bool
     <strong>offsetUnset</strong>(int $offset)
         </code>
@@ -616,7 +739,7 @@
     
 
                     <div class="method-description">
-                                    <p>Not Supported!</p>                                </div>
+                                    <p>Not Supported! Feiertage ist immutable.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -646,7 +769,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_contains">
-        <div class="location">at line         line 259</div>
+        <div class="location">at line         line 306</div>
         <code>                    boolean
     <strong>contains</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
         </code>
@@ -655,6 +778,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Whether a given date is a holliday in this Fiertage instance.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -662,7 +787,7 @@
                     <tr>
                 <td><a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a></td>
                 <td>$date</td>
-                <td></td>
+                <td>The given date.</td>
             </tr>
             </table>
 
@@ -683,16 +808,18 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_keyOf">
-        <div class="location">at line         line 282</div>
+                    <h3 id="method_get">
+        <div class="location">at line         line 330</div>
         <code>                    <abbr title="intrawarez\sabertooth\optionals\OptionalInterface">OptionalInterface</abbr>
-    <strong>keyOf</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
+    <strong>get</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>May get the Feiertag instance of a given date.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -700,7 +827,7 @@
                     <tr>
                 <td><a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a></td>
                 <td>$date</td>
-                <td></td>
+                <td>The given date.</td>
             </tr>
             </table>
 
@@ -710,7 +837,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><abbr title="intrawarez\sabertooth\optionals\OptionalInterface">OptionalInterface</abbr></td>
-            <td></td>
+            <td>The optional Feiertag instance.</td>
         </tr>
     </table>
 
