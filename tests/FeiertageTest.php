@@ -69,6 +69,15 @@ class FeiertageTest extends TestCase {
 		
 	}
 	
+	public function testWhich () {
+		
+		$which = Feiertage::which(new DateTime("2016-08-08"));
+		
+		$this->assertTrue($which->isPresent());
+		$this->assertEquals(Feiertag::AUGSBURGERFRIEDENSFEST, $which->get()->getKey());
+		
+	}
+	
 }
 
 ?>

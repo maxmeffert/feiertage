@@ -3,7 +3,7 @@
 namespace intrawarez\feiertage;
 
 use intrawarez\sabertooth\optionals\OptionalInterface;
-use intrawarez\sabertooth\optionals\Optionals;
+use intrawarez\sabertooth\optionals\Optional;
 
 
 /**
@@ -102,14 +102,14 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 */
 	static public function which ($object) : OptionalInterface {
 		
-		if ($date instanceof Feiertag) {
+		if ($object instanceof Feiertag) {
 				
-			return Optionals::Of($date);
+			return Optionals::Of($object);
 				
 		}
-		elseif ($date instanceof \DateTimeInterface) {
+		elseif ($object instanceof \DateTimeInterface) {
 			
-			return Feiertage::of(clone self::Jahr($date))->get($date);
+			return Feiertage::of(self::Jahr($object))->get($object);
 				
 		}
 		
@@ -337,12 +337,12 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 				
 			if ($f->getDate() == $date) {
 	
-				return Optionals::Of(clone $f);
+				return Optional::Of(clone $f);
 	
 			}
 		}
 	
-		return Optionals::Absent();
+		return Optional::Absent();
 	
 	}
 	
