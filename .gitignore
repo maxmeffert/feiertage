@@ -1,10 +1,13 @@
 vendor
 composer.phar
+composer.lock
 
 .project
 .buildpath
 .settings
 
 *.md.html
+
+clover.xml
 
 gauss.php
