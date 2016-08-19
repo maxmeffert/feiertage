@@ -37,6 +37,32 @@ class FeiertagTest extends TestCase {
 		
 	}
 	
+	public function testGetKey () {
+	
+		$jahr = 2016;
+	
+		$this->assertEquals(Feiertag::NEUJAHRSTAG, Feiertag::Neujahrstag($jahr)->getKey());
+		$this->assertEquals(Feiertag::HEILIGEDREIKOENIGE, Feiertag::HeiligeDreiKoenige($jahr)->getKey());
+		$this->assertEquals(Feiertag::GRUENDONNERSTAG, Feiertag::GruenDonnerstag($jahr)->getKey());
+		$this->assertEquals(Feiertag::KARFREITAG, Feiertag::Karfreitag($jahr)->getKey());
+		$this->assertEquals(Feiertag::OSTERSONNTAG, Feiertag::OsterSonntag($jahr)->getKey());
+		$this->assertEquals(Feiertag::OSTERMONTAG, Feiertag::OsterMontag($jahr)->getKey());
+		$this->assertEquals(Feiertag::TAGDERARBEIT, Feiertag::TagDerArbeit($jahr)->getKey());
+		$this->assertEquals(Feiertag::CHRISTIHIMMELFAHRT, Feiertag::ChristiHimmelfahrt($jahr)->getKey());
+		$this->assertEquals(Feiertag::PFINGSTSONNTAG, Feiertag::PfingstSonntag($jahr)->getKey());
+		$this->assertEquals(Feiertag::PFINGSTMONTAG, Feiertag::PfingstMontag($jahr)->getKey());
+		$this->assertEquals(Feiertag::FRONLEICHNAM, Feiertag::Fronleichnam($jahr)->getKey());
+		$this->assertEquals(Feiertag::AUGSBURGERFRIEDENSFEST, Feiertag::AugsburgerFriedensfest($jahr)->getKey());
+		$this->assertEquals(Feiertag::MARIAEHIMMELFAHRT, Feiertag::MariaeHimmelfahrt($jahr)->getKey());
+		$this->assertEquals(Feiertag::TAGDERDEUTSCHENEINHEIT, Feiertag::TagDerDeutschenEinheit($jahr)->getKey());
+		$this->assertEquals(Feiertag::REFORMATIONSTAG, Feiertag::Reformationstag($jahr)->getKey());
+		$this->assertEquals(Feiertag::ALLERHEILIGEN, Feiertag::Allerheiligen($jahr)->getKey());
+		$this->assertEquals(Feiertag::BUSSUNDBETTAG, Feiertag::BussUndBettag($jahr)->getKey());
+		$this->assertEquals(Feiertag::ERSTERWEIHNACHTSTAG, Feiertag::ErsterWeihnachtstag($jahr)->getKey());
+		$this->assertEquals(Feiertag::ZWEITERWEIHNACHTSTAG, Feiertag::ZweiterWeihnachtstag($jahr)->getKey());
+	
+	}
+	
 	public function test2016 () {
 	
 		$jahr = 2016;

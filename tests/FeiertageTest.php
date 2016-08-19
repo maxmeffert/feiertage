@@ -70,6 +70,26 @@ class FeiertageTest extends TestCase {
 		
 	}
 	
+	public function testGet () {
+		
+		$jahr = Feiertage::Jahr();
+		
+		$feiertage = Feiertage::of($jahr);
+		
+		$date = new \DateTime("$jahr-01-01");
+		$optional = $feiertage->get($date);
+		$this->assertTrue($optional->isPresent());
+		$this->assertFalse($optional->isAbsent());
+		$this->assertEquals(Feiertag::Neujahrstag($jahr), $optional->get());
+		
+
+		$date = new \DateTime("$jahr-07-23");
+		$optional = $feiertage->get($date);
+		$this->assertFalse($optional->isPresent());
+		$this->assertTrue($optional->isAbsent());
+		
+	}
+	
 	/**
 	 * Tests holidays for 2016.
 	 * Also checks ArrayAccess implementation.
@@ -118,9 +138,11 @@ class FeiertageTest extends TestCase {
 	/**
 	 * Tests the immutability of a Feiertage instance
 	 */
-	public function testImmutability () {
+	public function testArrayAccess () {
 		
 		$ft = Feiertage::of(2016);
+		
+		$this->assertTrue(isset($ft[Feiertag::NEUJAHRSTAG]));
 		
 		$this->assertEquals($ft[Feiertag::NEUJAHRSTAG]->getDate(), date_create("2016-01-01"));
 		
@@ -134,14 +156,65 @@ class FeiertageTest extends TestCase {
 		
 	}
 	
-// 	public function testWhich () {
+	public function testGetDates () {
 		
-// 		$which = Feiertage::which(new DateTime("2016-08-08"));
+		$jahr = Feiertage::Jahr();
 		
-// 		$this->assertTrue($which->isPresent());
-// 		$this->assertEquals(Feiertag::AUGSBURGERFRIEDENSFEST, $which->get()->getKey());
+		$feiertage = Feiertage::of($jahr);
 		
-// 	}
+		$dates = $feiertage->getDates();
+				
+		foreach ($feiertage as $feiertag) {
+			
+			/**
+			 * @var Feiertag $feiertag
+			 */
+			
+			$this->assertEquals($feiertag->getDate(), $dates[$feiertag->getKey()]);
+			
+		}
+		
+	}
+	
+	public function testToDateTimes () {
+		
+		$jahr = Feiertage::Jahr();
+		
+		$feiertage = Feiertage::of($jahr);
+		
+		$dates = $feiertage->toDateTimes();
+		
+		foreach ($feiertage as $feiertag) {
+				
+			/**
+			 * @var Feiertag $feiertag
+			 */
+				
+			$this->assertEquals($feiertag->toDateTime(), $dates[$feiertag->getKey()]);
+				
+		}
+		
+	}
+	
+	public function testToDateTimeImmutabless () {
+		
+		$jahr = Feiertage::Jahr();
+		
+		$feiertage = Feiertage::of($jahr);
+		
+		$dates = $feiertage->toDateTimeImmutables();
+		
+		foreach ($feiertage as $feiertag) {
+				
+			/**
+			 * @var Feiertag $feiertag
+			 */
+				
+			$this->assertEquals($feiertag->toDateTimeImmutable(), $dates[$feiertag->getKey()]);
+				
+		}
+		
+	}
 	
 }
 
