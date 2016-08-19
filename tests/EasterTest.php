@@ -34,6 +34,7 @@ class EasterTest extends TestCase {
 		
 		$easterDate = date_create(date("Y-m-d",easter_date($year)));
 		
+		// easter_date may actually compute a sunday on recent php versions
 		if ($easterDate->format("N") == 6) {
 		
 			$easterDate->modify("+1 days");
