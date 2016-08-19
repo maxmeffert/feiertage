@@ -40,6 +40,8 @@ class FeiertageTest extends TestCase {
 
 		$this->assertFalse(Feiertage::check(123456789));
 		$this->assertTrue(Feiertage::check(Feiertag::Allerheiligen(2016)));
+		$this->assertTrue(Feiertage::check(Feiertag::Allerheiligen(2016)->getDate()));
+		$this->assertFalse(Feiertage::check(new \DateTime("2016-07-23")));
 		
 		$date = new \DateTime();
 		$feiertage = Feiertage::of(Feiertage::Jahr($date));
