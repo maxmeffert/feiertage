@@ -33,7 +33,12 @@ class EasterTest extends TestCase {
 	static private function nativeEasterSunday (int $year) : DateTime {
 		
 		$easterDate = date_create(date("Y-m-d",easter_date($year)));
-		$easterDate->modify("+1 days");
+		
+		if ($easterDate->format("N") == 6) {
+		
+			$easterDate->modify("+1 days");
+			
+		}
 		
 		return $easterDate;
 		
@@ -58,18 +63,18 @@ class EasterTest extends TestCase {
 		
 	}
 	
-// 	/**
-// 	 * Tests the covarage of the domain of PHP's native <b>easter_date</b> function.  
-// 	 */
-// 	public function testNativeEasterDateDomainCovarage () {
+	/**
+	 * Tests the covarage of the domain of PHP's native <b>easter_date</b> function.  
+	 */
+	public function testNativeEasterDateDomainCovarage () {
 		
-// 		for ($year=1970; $year < 2038; $year++) {
+		for ($year=1970; $year < 2038; $year++) {
 			
-// 			$this->assertEquals(self::nativeEasterSunday($year), Easter::date($year));
+			$this->assertEquals(self::nativeEasterSunday($year), Easter::date($year));
 			
-// 		}
+		}
 		
-// 	}
+	}
 	
 	
 }
