@@ -76,7 +76,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 	 * @param object $date The given object.
 	 * @return boolean
 	 */
-	static public function check ($object) : boolean {
+	static public function check ($object) : bool {
 	
 		if ($object instanceof Feiertag) {
 			
@@ -104,7 +104,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 		
 		if ($object instanceof Feiertag) {
 				
-			return Optionals::Of($object);
+			return Optional::Of($object);
 				
 		}
 		elseif ($object instanceof \DateTimeInterface) {
@@ -113,7 +113,7 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate {
 				
 		}
 		
-		return Optionals::Absent();
+		return Optional::Absent();
 		
 	}
 	

@@ -8,6 +8,67 @@ use intrawarez\feiertage\Feiertag;
 
 class FeiertageTest extends TestCase {
 	
+	public function testJahr () {
+		
+		$date = new \DateTime();
+		
+		$this->assertEquals(intval($date->format("Y")), Feiertage::Jahr());
+		
+		$date = new \DateTime("666-06-06");
+		
+		$this->assertEquals(intval($date->format("Y")), Feiertage::Jahr($date));
+		$this->assertEquals(666, Feiertage::Jahr($date));
+		
+	}
+	
+	public function testOf () {
+		
+		$date = new \DateTime();
+		$jahr = intval($date->format("Y"));
+		
+		$feiertage = Feiertage::of();
+		
+		$this->assertEquals($jahr, $feiertage->getJahr());
+		
+		$feiertage = Feiertage::of(666);
+		
+		$this->assertEquals(666, $feiertage->getJahr());
+		
+	}
+	
+	public function testCheck () {
+
+		$this->assertFalse(Feiertage::check(123456789));
+		$this->assertTrue(Feiertage::check(Feiertag::Allerheiligen(2016)));
+		
+		$date = new \DateTime();
+		$feiertage = Feiertage::of(Feiertage::Jahr($date));
+		
+		$this->assertEquals($feiertage->contains($date), Feiertage::check($date));
+		
+	}
+	
+	public function testWhich () {
+		
+		$jahr = Feiertage::Jahr();
+		
+		$expected = Feiertag::Allerheiligen($jahr);
+		
+		$optional = Feiertage::which(Feiertag::Allerheiligen($jahr));
+		$this->assertTrue($optional->isPresent());
+		$this->assertFalse($optional->isAbsent());
+		$this->assertEquals($expected, $optional->get());
+		
+		$optional = Feiertage::which(Feiertag::Allerheiligen($jahr)->getDate());
+		$this->assertTrue($optional->isPresent());
+		$this->assertFalse($optional->isAbsent());
+		$this->assertEquals($expected, $optional->get());
+		
+		$optional = Feiertage::which(123456789);
+		$this->assertTrue($optional->isAbsent());
+		$this->assertFalse($optional->isPresent());
+		
+	}
 	
 	/**
 	 * Tests holidays for 2016.
@@ -67,16 +128,20 @@ class FeiertageTest extends TestCase {
 		
 		$this->assertEquals($ft[Feiertag::NEUJAHRSTAG]->getDate(), date_create("2016-01-01"));
 		
+		unset($ft[Feiertag::NEUJAHRSTAG]);
+
+		$this->assertEquals($ft[Feiertag::NEUJAHRSTAG]->getDate(), date_create("2016-01-01"));
+		
 	}
 	
-	public function testWhich () {
+// 	public function testWhich () {
 		
-		$which = Feiertage::which(new DateTime("2016-08-08"));
+// 		$which = Feiertage::which(new DateTime("2016-08-08"));
 		
-		$this->assertTrue($which->isPresent());
-		$this->assertEquals(Feiertag::AUGSBURGERFRIEDENSFEST, $which->get()->getKey());
+// 		$this->assertTrue($which->isPresent());
+// 		$this->assertEquals(Feiertag::AUGSBURGERFRIEDENSFEST, $which->get()->getKey());
 		
-	}
+// 	}
 	
 }
 

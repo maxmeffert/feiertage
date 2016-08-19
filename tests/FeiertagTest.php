@@ -77,17 +77,21 @@ class FeiertagTest extends TestCase {
 	
 	public function testToDateTime () {
 		
-		$date = Feiertag::Neujahrstag(2016)->toDateTime();
+		$feiertag = Feiertag::Neujahrstag(2016);
+		$date = $feiertag->toDateTime();
 		
 		$this->assertInstanceOf(\DateTime::class, $date);
+		$this->assertEquals($feiertag->getDate(), $date);
 		
 	}
 	
 	public function testToDateTimeImmutable () {
-	
-		$date = Feiertag::Neujahrstag(2016)->toDateTimeImmutable();
+
+		$feiertag = Feiertag::Neujahrstag(2016);
+		$date = $feiertag->toDateTimeImmutable();
 	
 		$this->assertInstanceOf(\DateTimeImmutable::class, $date);
+		$this->assertEquals($feiertag->getDate(), $date);
 	
 	}
 	
