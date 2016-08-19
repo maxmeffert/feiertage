@@ -3,7 +3,7 @@ sudo: false
 language: php
 
 php:
-  - 7.0.8
+  - 7.0
 
 before_script:
   - composer require satooshi/php-coveralls:1.* -n ;

@@ -58,18 +58,18 @@ class EasterTest extends TestCase {
 		
 	}
 	
-	/**
-	 * Tests the covarage of the domain of PHP's native <b>easter_date</b> function.  
-	 */
-	public function testNativeEasterDateDomainCovarage () {
+// 	/**
+// 	 * Tests the covarage of the domain of PHP's native <b>easter_date</b> function.  
+// 	 */
+// 	public function testNativeEasterDateDomainCovarage () {
 		
-		for ($year=1970; $year < 2038; $year++) {
+// 		for ($year=1970; $year < 2038; $year++) {
 			
-			$this->assertEquals(self::nativeEasterSunday($year), Easter::date($year));
+// 			$this->assertEquals(self::nativeEasterSunday($year), Easter::date($year));
 			
-		}
+// 		}
 		
-	}
+// 	}
 	
 	
 }
