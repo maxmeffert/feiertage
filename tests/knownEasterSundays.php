@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 /* =============================================================================
  * Known Easter Sundays.
  * =============================================================================
@@ -176,10 +175,8 @@ $pattern = "@(?P<date>\d\d?(st|nd|rd|th)\s(March|April)\s\d\d\d\d)@";
 preg_match_all($pattern, $subject, $matches);
 
 $dates = $matches["date"];
-$dates = array_map(function($date){
-	
-	return new \DateTime($date);
-	
+$dates = array_map(function ($date) {
+    return new \DateTime($date);
 }, $dates);
 
 sort($dates);
@@ -187,6 +184,3 @@ sort($dates);
 // var_dump($dates);
 
 return $dates;
-
-
-?>
