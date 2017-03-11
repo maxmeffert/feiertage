@@ -1,7 +1,7 @@
 {
     "name": "maxmeffert/feiertage",
     "description": "A PHP7 utility for legal holidiays in Germany",
-    "homepage": "http://intrawarez.github.io/feiertage/",
+    "homepage": "http://maxmeffert.github.io/feiertage/",
     "authors": [
         {
             "name": "Maximilian Meffert",
