@@ -1,11 +1,11 @@
 <?php
-namespace intrawarez\feiertage\tests;
+namespace maxmeffert\feiertage\tests;
 
 include_once __DIR__ . "/../vendor/autoload.php";
 
 use PHPUnit\Framework\TestCase;
-use intrawarez\feiertage\Feiertage;
-use intrawarez\feiertage\Feiertag;
+use maxmeffert\feiertage\Feiertage;
+use maxmeffert\feiertage\Feiertag;
 
 class FeiertageTest extends TestCase
 {
@@ -58,12 +58,12 @@ class FeiertageTest extends TestCase
         $optional = Feiertage::which(Feiertag::Allerheiligen($jahr));
         $this->assertTrue($optional->isPresent());
         $this->assertFalse($optional->isAbsent());
-        $this->assertEquals($expected, $optional->get());
+        $this->assertEquals($expected, $optional->getValue());
         
         $optional = Feiertage::which(Feiertag::Allerheiligen($jahr)->getDate());
         $this->assertTrue($optional->isPresent());
         $this->assertFalse($optional->isAbsent());
-        $this->assertEquals($expected, $optional->get());
+        $this->assertEquals($expected, $optional->getValue());
         
         $optional = Feiertage::which(123456789);
         $this->assertTrue($optional->isAbsent());
@@ -80,7 +80,7 @@ class FeiertageTest extends TestCase
         $optional = $feiertage->get($date);
         $this->assertTrue($optional->isPresent());
         $this->assertFalse($optional->isAbsent());
-        $this->assertEquals(Feiertag::Neujahrstag($jahr), $optional->get());
+        $this->assertEquals(Feiertag::Neujahrstag($jahr), $optional->getValue());
         
         $date = new \DateTime("$jahr-07-23");
         $optional = $feiertage->get($date);

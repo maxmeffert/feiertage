@@ -1,5 +1,5 @@
 <?php
-namespace intrawarez\feiertage;
+namespace maxmeffert\feiertage;
 
 /**
  * Utility function for integer division.

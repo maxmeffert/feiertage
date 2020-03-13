@@ -1,8 +1,8 @@
 <?php
-namespace intrawarez\feiertage;
+namespace maxmeffert\feiertage;
 
-use intrawarez\sabertooth\optionals\OptionalInterface;
-use intrawarez\sabertooth\optionals\Optional;
+use Sabertooth\Optionals\OptionalInterface;
+use Sabertooth\Optionals\Optional;
 
 /**
  * Represents all 19 legal holidiays in Germany for a given year.

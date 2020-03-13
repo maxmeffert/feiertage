@@ -1,8 +1,8 @@
 <?php
-namespace intrawarez\feiertage\tests;
+namespace maxmeffert\feiertage\tests;
 
 use PHPUnit\Framework\TestCase;
-use intrawarez\feiertage\Easter;
+use maxmeffert\feiertage\Easter;
 
 /**
  * Gets the sorted array of konwn easter sundays from './knownEasterSundays.php'

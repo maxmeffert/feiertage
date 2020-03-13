@@ -1,5 +1,5 @@
 <?php
-namespace intrawarez\feiertage;
+namespace maxmeffert\feiertage;
 
 /**
  * Represents a single legal holiday in Germany.

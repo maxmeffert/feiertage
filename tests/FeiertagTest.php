@@ -1,10 +1,10 @@
 <?php
-namespace intrawarez\feiertage\tests;
+namespace maxmeffert\feiertage\tests;
 
 include_once __DIR__ . "/../vendor/autoload.php";
 
 use PHPUnit\Framework\TestCase;
-use intrawarez\feiertage\Feiertag;
+use maxmeffert\feiertage\Feiertag;
 
 class FeiertagTest extends TestCase
 {
