@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/IntraWarez/feiertage.svg?branch=master)](https://travis-ci.org/IntraWarez/feiertage)
-[![Coverage Status](https://coveralls.io/repos/github/IntraWarez/feiertage/badge.svg?branch=master)](https://coveralls.io/github/IntraWarez/feiertage?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/intrawarez/feiertage/v/stable)](https://packagist.org/packages/intrawarez/feiertage)
-[![License](https://poser.pugx.org/intrawarez/feiertage/license)](https://packagist.org/packages/intrawarez/sabertooth)
+[![Build Status](https://travis-ci.org/maxmeffert/feiertage.svg?branch=master)](https://travis-ci.org/maxmeffert/feiertage)
+[![Coverage Status](https://coveralls.io/repos/github/maxmeffert/feiertage/badge.svg?branch=master)](https://coveralls.io/github/maxmeffert/feiertage?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/maxmeffert/feiertage/v/stable)](https://packagist.org/packages/maxmeffert/feiertage)
+[![License](https://poser.pugx.org/maxmeffert/feiertage/license)](https://packagist.org/packages/maxmeffert/sabertooth)
 
 # [feiertage](http://intrawarez.github.io/feiertage/)
 
