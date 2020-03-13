@@ -13,7 +13,7 @@ class FeiertagTest extends TestCase
     {
         $keys = Feiertag::keys();
         
-        $this->assertInternalType("array", $keys);
+        $this->assertIsArray($keys);
         
         $this->assertEquals(19, count($keys));
         
