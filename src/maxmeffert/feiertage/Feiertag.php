@@ -10,160 +10,6 @@ namespace maxmeffert\feiertage;
  */
 class Feiertag
 {
-
-    /*
-     * ===========================================================
-     * "Keys"
-     * ===========================================================
-     */
-    
-    /**
-     * "Key" for the <b>New Year's Day</b>
-     *
-     * @var integer
-     */
-    const NEUJAHRSTAG = 0;
-
-    /**
-     * "Key" for the <b>Twelfth Day</b>
-     *
-     * @var integer
-     */
-    const HEILIGEDREIKOENIGE = 1;
-
-    /**
-     * "Key" for the <b>Holy Thursday</b>
-     *
-     * @var integer
-     */
-    const GRUENDONNERSTAG = 2;
-
-    /**
-     * "Key" for the <b>Good Friday</b>
-     *
-     * @var integer
-     */
-    const KARFREITAG = 3;
-
-    /**
-     * "Key" for the <b>Easter Sunday</b>
-     *
-     * @var integer
-     */
-    const OSTERSONNTAG = 4;
-
-    /**
-     * "Key" for the <b>Easter Monday</b>
-     *
-     * @var integer
-     */
-    const OSTERMONTAG = 5;
-
-    /**
-     * "Key" for the <b>Labour Day</b>
-     *
-     * @var integer
-     */
-    const TAGDERARBEIT = 6;
-
-    /**
-     * "Key" for the <b>Ascension Day</b>
-     *
-     * @var integer
-     */
-    const CHRISTIHIMMELFAHRT = 7;
-
-    /**
-     * "Key" for the <b>Whit Sunday</b>
-     *
-     * @var integer
-     */
-    const PFINGSTSONNTAG = 8;
-
-    /**
-     * "Key" for the <b>Whit Monday</b>
-     *
-     * @var integer
-     */
-    const PFINGSTMONTAG = 9;
-
-    /**
-     * "Key" for the <b>Feast of Corpus Christi</b>
-     *
-     * @var integer
-     */
-    const FRONLEICHNAM = 10;
-
-    /**
-     * "Key" for the <b>Augsburg's Feast of Peace</b>
-     *
-     * This is only a holiday for Augsburg city!
-     *
-     * @var integer
-     */
-    const AUGSBURGERFRIEDENSFEST = 11;
-
-    /**
-     * "Key" for the <b>Feast of the Assumption</b>
-     *
-     * @var integer
-     */
-    const MARIAEHIMMELFAHRT = 12;
-
-    /**
-     * "Key" for the <b>German Unity Day</b>
-     *
-     * @var integer
-     */
-    const TAGDERDEUTSCHENEINHEIT = 13;
-
-    /**
-     * "Key" for the <b>Reformation Day</b>
-     *
-     * @var integer
-     */
-    const REFORMATIONSTAG = 14;
-
-    /**
-     * "Key" for the <b>All Saints' Day</b>
-     *
-     * @var integer
-     */
-    const ALLERHEILIGEN = 15;
-
-    /**
-     * "Key" for the <b>Penance Day</b>
-     *
-     * @var integer
-     */
-    const BUSSUNDBETTAG = 16;
-
-    /**
-     * "Key" for the <b>1st Christmas Day</b>
-     *
-     * @var integer
-     */
-    const ERSTERWEIHNACHTSTAG = 17;
-
-    /**
-     * "Key" for the <b>2nd Christmas Day</b>
-     *
-     * @var integer
-     */
-    const ZWEITERWEIHNACHTSTAG = 18;
-
-    /**
-     * Gets the array of all valid "keys" with their names as indeces.
-     *
-     * @return array The array "keys" with their names as indeces.
-     */
-    public static function keys(): array
-    {
-        $class = new \ReflectionClass(self::class);
-        
-        return $class->getConstants();
-    }
-
     /*
      * ===========================================================
      * Factory Methods
@@ -178,7 +24,7 @@ class Feiertag
      */
     public static function neujahrstag(int $jahr): Feiertag
     {
-        return new Feiertag(self::NEUJAHRSTAG, new \DateTimeImmutable("$jahr-01-01"));
+        return new Feiertag(FeiertagEnum::NEUJAHRSTAG, new \DateTimeImmutable("$jahr-01-01"));
     }
 
     /**
@@ -189,7 +35,7 @@ class Feiertag
      */
     public static function heiligeDreiKoenige(int $jahr): Feiertag
     {
-        return new Feiertag(self::HEILIGEDREIKOENIGE, new \DateTimeImmutable("$jahr-01-06"));
+        return new Feiertag(FeiertagEnum::HEILIGEDREIKOENIGE, new \DateTimeImmutable("$jahr-01-06"));
     }
 
     /**
@@ -200,7 +46,7 @@ class Feiertag
      */
     public static function gruenDonnerstag(int $jahr): Feiertag
     {
-        return new Feiertag(self::GRUENDONNERSTAG, Easter::date($jahr)->modify("-3 days"));
+        return new Feiertag(FeiertagEnum::GRUENDONNERSTAG, Easter::date($jahr)->modify("-3 days"));
     }
 
     /**
@@ -211,7 +57,7 @@ class Feiertag
      */
     public static function karfreitag(int $jahr): Feiertag
     {
-        return new Feiertag(self::KARFREITAG, Easter::date($jahr)->modify("-2 days"));
+        return new Feiertag(FeiertagEnum::KARFREITAG, Easter::date($jahr)->modify("-2 days"));
     }
 
     /**
@@ -222,7 +68,7 @@ class Feiertag
      */
     public static function osterSonntag(int $jahr): Feiertag
     {
-        return new Feiertag(self::OSTERSONNTAG, Easter::date($jahr));
+        return new Feiertag(FeiertagEnum::OSTERSONNTAG, Easter::date($jahr));
     }
 
     /**
@@ -233,7 +79,7 @@ class Feiertag
      */
     public static function osterMontag(int $jahr): Feiertag
     {
-        return new Feiertag(self::OSTERMONTAG, Easter::date($jahr)->modify("+1 days"));
+        return new Feiertag(FeiertagEnum::OSTERMONTAG, Easter::date($jahr)->modify("+1 days"));
     }
 
     /**
@@ -244,7 +90,7 @@ class Feiertag
      */
     public static function tagDerArbeit(int $jahr): Feiertag
     {
-        return new Feiertag(self::TAGDERARBEIT, new \DateTimeImmutable("$jahr-05-01"));
+        return new Feiertag(FeiertagEnum::TAGDERARBEIT, new \DateTimeImmutable("$jahr-05-01"));
     }
 
     /**
@@ -255,7 +101,7 @@ class Feiertag
      */
     public static function christiHimmelfahrt(int $jahr): Feiertag
     {
-        return new Feiertag(self::CHRISTIHIMMELFAHRT, Easter::date($jahr)->modify("+39 days"));
+        return new Feiertag(FeiertagEnum::CHRISTIHIMMELFAHRT, Easter::date($jahr)->modify("+39 days"));
     }
 
     /**
@@ -266,7 +112,7 @@ class Feiertag
      */
     public static function pfingstSonntag(int $jahr): Feiertag
     {
-        return new Feiertag(self::PFINGSTSONNTAG, Easter::date($jahr)->modify("+49 days"));
+        return new Feiertag(FeiertagEnum::PFINGSTSONNTAG, Easter::date($jahr)->modify("+49 days"));
     }
 
     /**
@@ -277,7 +123,7 @@ class Feiertag
      */
     public static function pfingstMontag(int $jahr): Feiertag
     {
-        return new Feiertag(self::PFINGSTMONTAG, Easter::date($jahr)->modify("+50 days"));
+        return new Feiertag(FeiertagEnum::PFINGSTMONTAG, Easter::date($jahr)->modify("+50 days"));
     }
 
     /**
@@ -288,7 +134,7 @@ class Feiertag
      */
     public static function fronleichnam(int $jahr): Feiertag
     {
-        return new Feiertag(self::FRONLEICHNAM, Easter::date($jahr)->modify("+60 days"));
+        return new Feiertag(FeiertagEnum::FRONLEICHNAM, Easter::date($jahr)->modify("+60 days"));
     }
 
     /**
@@ -301,7 +147,7 @@ class Feiertag
      */
     public static function augsburgerFriedensfest(int $jahr): Feiertag
     {
-        return new Feiertag(self::AUGSBURGERFRIEDENSFEST, new \DateTimeImmutable("$jahr-08-08"));
+        return new Feiertag(FeiertagEnum::AUGSBURGERFRIEDENSFEST, new \DateTimeImmutable("$jahr-08-08"));
     }
 
     /**
@@ -312,7 +158,7 @@ class Feiertag
      */
     public static function mariaeHimmelfahrt(int $jahr): Feiertag
     {
-        return new Feiertag(self::MARIAEHIMMELFAHRT, new \DateTimeImmutable("$jahr-08-15"));
+        return new Feiertag(FeiertagEnum::MARIAEHIMMELFAHRT, new \DateTimeImmutable("$jahr-08-15"));
     }
 
     /**
@@ -323,7 +169,7 @@ class Feiertag
      */
     public static function tagDerDeutschenEinheit(int $jahr): Feiertag
     {
-        return new Feiertag(self::TAGDERDEUTSCHENEINHEIT, new \DateTimeImmutable("$jahr-10-03"));
+        return new Feiertag(FeiertagEnum::TAGDERDEUTSCHENEINHEIT, new \DateTimeImmutable("$jahr-10-03"));
     }
 
     /**
@@ -334,7 +180,7 @@ class Feiertag
      */
     public static function reformationstag(int $jahr): Feiertag
     {
-        return new Feiertag(self::REFORMATIONSTAG, new \DateTimeImmutable("$jahr-10-31"));
+        return new Feiertag(FeiertagEnum::REFORMATIONSTAG, new \DateTimeImmutable("$jahr-10-31"));
     }
 
     /**
@@ -345,7 +191,7 @@ class Feiertag
      */
     public static function allerheiligen(int $jahr): Feiertag
     {
-        return new Feiertag(self::ALLERHEILIGEN, new \DateTimeImmutable("$jahr-11-01"));
+        return new Feiertag(FeiertagEnum::ALLERHEILIGEN, new \DateTimeImmutable("$jahr-11-01"));
     }
 
     /**
@@ -364,7 +210,7 @@ class Feiertag
             $date = $date->modify("-1 days");
         }
         
-        return new Feiertag(self::BUSSUNDBETTAG, $date);
+        return new Feiertag(FeiertagEnum::BUSSUNDBETTAG, $date);
     }
 
     /**
@@ -375,7 +221,7 @@ class Feiertag
      */
     public static function ersterWeihnachtstag(int $jahr): Feiertag
     {
-        return new Feiertag(self::ERSTERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-25"));
+        return new Feiertag(FeiertagEnum::ERSTERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-25"));
     }
 
     /**
@@ -386,7 +232,7 @@ class Feiertag
      */
     public static function zweiterWeihnachtstag(int $jahr): Feiertag
     {
-        return new Feiertag(self::ZWEITERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-26"));
+        return new Feiertag(FeiertagEnum::ZWEITERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-26"));
     }
 
     /*
