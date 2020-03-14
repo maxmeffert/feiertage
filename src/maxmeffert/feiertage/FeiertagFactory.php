@@ -1,7 +1,7 @@
 <?php
 namespace maxmeffert\feiertage;
 
-class FeiertagFactory 
+class FeiertagFactory
 {
     private $easterSundayCalculator;
 

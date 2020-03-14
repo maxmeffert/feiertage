@@ -4,11 +4,6 @@ namespace maxmeffert\feiertage\tests;
 use PHPUnit\Framework\TestCase;
 use maxmeffert\feiertage\GaussianEasterSundayCalculator;
 
-function KnownEasterSundays(): array
-{
-    return include __DIR__ . "/knownEasterSundays.php";
-}
-
 class GaussianEasterSundayCalculatorTest extends TestCase
 {
     private $easterSundayCalculator;
@@ -16,6 +11,11 @@ class GaussianEasterSundayCalculatorTest extends TestCase
     protected function setUp(): void
     {
         $this->easterSundayCalculator = new GaussianEasterSundayCalculator();
+    }
+
+    private static function knownEasterSundays(): array
+    {
+        return include __DIR__ . "/knownEasterSundays.php";
     }
 
     private static function nativeEasterSunday(int $year): \DateTime
@@ -32,7 +32,7 @@ class GaussianEasterSundayCalculatorTest extends TestCase
 
     public function testKnownEasterSundayCoverage()
     {
-        foreach (KnownEasterSundays() as $easterSunday) {
+        foreach (self::KnownEasterSundays() as $easterSunday) {
             $year = intval($easterSunday->format("Y"));
             $this->assertEquals($easterSunday, $this->easterSundayCalculator->calculate($year));
         }

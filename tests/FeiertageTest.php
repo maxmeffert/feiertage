@@ -1,8 +1,6 @@
 <?php
 namespace maxmeffert\feiertage\tests;
 
-include_once __DIR__ . "/../vendor/autoload.php";
-
 use PHPUnit\Framework\TestCase;
 use maxmeffert\feiertage\Feiertage;
 use maxmeffert\feiertage\Feiertag;
