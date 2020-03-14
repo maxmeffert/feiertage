@@ -19,7 +19,7 @@ class FeiertagTest extends TestCase
     }
 
     public function testFormat()
-    {        
+    {
         $this->assertEquals($this->feiertag->format(\DateTime::ISO8601), $this->date->format(\DateTime::ISO8601));
     }
 
