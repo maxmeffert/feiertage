@@ -34,14 +34,16 @@ class GaussianEasterSundayCalculatorTest extends TestCase
     {
         foreach (self::KnownEasterSundays() as $easterSunday) {
             $year = intval($easterSunday->format("Y"));
-            $this->assertEquals($easterSunday, $this->easterSundayCalculator->calculate($year));
+            $easterSunday = $this->easterSundayCalculator->calculate($year);
+            $this->assertEquals($easterSunday, $easterSunday);
         }
     }
 
     public function testNativeEasterDateDomainCovarage()
     {
         for ($year = 1970; $year < 2038; $year ++) {
-            $this->assertEquals(self::nativeEasterSunday($year), $this->easterSundayCalculator->calculate($year));
+            $easterSunday = $this->easterSundayCalculator->calculate($year);
+            $this->assertEquals(self::nativeEasterSunday($year), $easterSunday);
         }
     }
 }
