@@ -12,82 +12,106 @@ class FeiertagFactory
 
     public function neujahrstag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::NEUJAHRSTAG, new \DateTimeImmutable("$jahr-01-01"));
+        $date = new \DateTimeImmutable("$jahr-01-01");
+        return new Feiertag(FeiertagEnum::NEUJAHRSTAG, $date);
     }
 
     public function heiligeDreiKoenige(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::HEILIGEDREIKOENIGE, new \DateTimeImmutable("$jahr-01-06"));
+        $date = new \DateTimeImmutable("$jahr-01-06");
+        return new Feiertag(FeiertagEnum::HEILIGEDREIKOENIGE, $date);
     }
 
     public function gruenDonnerstag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::GRUENDONNERSTAG, $this->easterSundayCalculator->calculate($jahr)->modify("-3 days"));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday->modify("-3 days");
+        return new Feiertag(FeiertagEnum::GRUENDONNERSTAG, $date);
     }
 
     public function karfreitag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::KARFREITAG, $this->easterSundayCalculator->calculate($jahr)->modify("-2 days"));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday->modify("-2 days");
+        return new Feiertag(FeiertagEnum::KARFREITAG, $date);
     }
 
     public function osterSonntag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::OSTERSONNTAG, $this->easterSundayCalculator->calculate($jahr));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday;
+        return new Feiertag(FeiertagEnum::OSTERSONNTAG, $date);
     }
 
     public function osterMontag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::OSTERMONTAG, $this->easterSundayCalculator->calculate($jahr)->modify("+1 days"));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday->modify("+1 days");
+        return new Feiertag(FeiertagEnum::OSTERMONTAG, $date);
     }
 
     public function tagDerArbeit(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::TAGDERARBEIT, new \DateTimeImmutable("$jahr-05-01"));
+        $date = new \DateTimeImmutable("$jahr-05-01");
+        return new Feiertag(FeiertagEnum::TAGDERARBEIT, $date);
     }
 
     public function christiHimmelfahrt(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::CHRISTIHIMMELFAHRT, $this->easterSundayCalculator->calculate($jahr)->modify("+39 days"));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday->modify("+39 days");
+        return new Feiertag(FeiertagEnum::CHRISTIHIMMELFAHRT, $date);
     }
 
     public function pfingstSonntag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::PFINGSTSONNTAG, $this->easterSundayCalculator->calculate($jahr)->modify("+49 days"));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday->modify("+49 days");
+        return new Feiertag(FeiertagEnum::PFINGSTSONNTAG, $date);
     }
     
     public function pfingstMontag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::PFINGSTMONTAG, $this->easterSundayCalculator->calculate($jahr)->modify("+50 days"));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday->modify("+50 days");
+        return new Feiertag(FeiertagEnum::PFINGSTMONTAG, $date);
     }
 
     public function fronleichnam(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::FRONLEICHNAM, $this->easterSundayCalculator->calculate($jahr)->modify("+60 days"));
+        $easterSunday = $this->easterSundayCalculator->calculate($jahr);
+        $date = $easterSunday->modify("+60 days");
+        return new Feiertag(FeiertagEnum::FRONLEICHNAM, $date);
     }
 
     public function augsburgerFriedensfest(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::AUGSBURGERFRIEDENSFEST, new \DateTimeImmutable("$jahr-08-08"));
+        $date = new \DateTimeImmutable("$jahr-08-08");
+        return new Feiertag(FeiertagEnum::AUGSBURGERFRIEDENSFEST, $date);
     }
 
     public function mariaeHimmelfahrt(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::MARIAEHIMMELFAHRT, new \DateTimeImmutable("$jahr-08-15"));
+        $date = new \DateTimeImmutable("$jahr-08-15");
+        return new Feiertag(FeiertagEnum::MARIAEHIMMELFAHRT, $date);
     }
 
     public function tagDerDeutschenEinheit(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::TAGDERDEUTSCHENEINHEIT, new \DateTimeImmutable("$jahr-10-03"));
+        $date = new \DateTimeImmutable("$jahr-10-03");
+        return new Feiertag(FeiertagEnum::TAGDERDEUTSCHENEINHEIT, $date);
     }
 
     public function reformationstag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::REFORMATIONSTAG, new \DateTimeImmutable("$jahr-10-31"));
+        $date = new \DateTimeImmutable("$jahr-10-31");
+        return new Feiertag(FeiertagEnum::REFORMATIONSTAG, $date);
     }
 
     public function allerheiligen(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::ALLERHEILIGEN, new \DateTimeImmutable("$jahr-11-01"));
+        $date = new \DateTimeImmutable("$jahr-11-01");
+        return new Feiertag(FeiertagEnum::ALLERHEILIGEN, $date);
     }
 
     public function bussUndBettag(int $jahr): Feiertag
@@ -105,11 +129,13 @@ class FeiertagFactory
 
     public function ersterWeihnachtstag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::ERSTERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-25"));
+        $date = new \DateTimeImmutable("$jahr-12-25");
+        return new Feiertag(FeiertagEnum::ERSTERWEIHNACHTSTAG, $date);
     }
 
     public function zweiterWeihnachtstag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::ZWEITERWEIHNACHTSTAG, new \DateTimeImmutable("$jahr-12-26"));
+        $date = new \DateTimeImmutable("$jahr-12-26");
+        return new Feiertag(FeiertagEnum::ZWEITERWEIHNACHTSTAG, $date);
     }
 }
