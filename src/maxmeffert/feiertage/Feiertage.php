@@ -124,26 +124,28 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate
     private function __construct(int $jahr)
     {
         $this->jahr = $jahr;
+
+        $feiertagFactory = new FeiertagFactory();
         
-        $this->feiertage[FeiertagEnum::NEUJAHRSTAG] = Feiertag::Neujahrstag($jahr);
-        $this->feiertage[FeiertagEnum::HEILIGEDREIKOENIGE] = Feiertag::HeiligeDreiKoenige($jahr);
-        $this->feiertage[FeiertagEnum::GRUENDONNERSTAG] = Feiertag::GruenDonnerstag($jahr);
-        $this->feiertage[FeiertagEnum::KARFREITAG] = Feiertag::Karfreitag($jahr);
-        $this->feiertage[FeiertagEnum::OSTERSONNTAG] = Feiertag::OsterSonntag($jahr);
-        $this->feiertage[FeiertagEnum::OSTERMONTAG] = Feiertag::OsterMontag($jahr);
-        $this->feiertage[FeiertagEnum::TAGDERARBEIT] = Feiertag::TagDerArbeit($jahr);
-        $this->feiertage[FeiertagEnum::CHRISTIHIMMELFAHRT] = Feiertag::ChristiHimmelfahrt($jahr);
-        $this->feiertage[FeiertagEnum::PFINGSTSONNTAG] = Feiertag::PfingstSonntag($jahr);
-        $this->feiertage[FeiertagEnum::PFINGSTMONTAG] = Feiertag::PfingstMontag($jahr);
-        $this->feiertage[FeiertagEnum::FRONLEICHNAM] = Feiertag::Fronleichnam($jahr);
-        $this->feiertage[FeiertagEnum::AUGSBURGERFRIEDENSFEST] = Feiertag::AugsburgerFriedensfest($jahr);
-        $this->feiertage[FeiertagEnum::MARIAEHIMMELFAHRT] = Feiertag::MariaeHimmelfahrt($jahr);
-        $this->feiertage[FeiertagEnum::TAGDERDEUTSCHENEINHEIT] = Feiertag::TagDerDeutschenEinheit($jahr);
-        $this->feiertage[FeiertagEnum::REFORMATIONSTAG] = Feiertag::Reformationstag($jahr);
-        $this->feiertage[FeiertagEnum::ALLERHEILIGEN] = Feiertag::Allerheiligen($jahr);
-        $this->feiertage[FeiertagEnum::BUSSUNDBETTAG] = Feiertag::BussUndBettag($jahr);
-        $this->feiertage[FeiertagEnum::ERSTERWEIHNACHTSTAG] = Feiertag::ErsterWeihnachtstag($jahr);
-        $this->feiertage[FeiertagEnum::ZWEITERWEIHNACHTSTAG] = Feiertag::ZweiterWeihnachtstag($jahr);
+        $this->feiertage[FeiertagEnum::NEUJAHRSTAG] =  $feiertagFactory->Neujahrstag($jahr);
+        $this->feiertage[FeiertagEnum::HEILIGEDREIKOENIGE] =  $feiertagFactory->HeiligeDreiKoenige($jahr);
+        $this->feiertage[FeiertagEnum::GRUENDONNERSTAG] =  $feiertagFactory->GruenDonnerstag($jahr);
+        $this->feiertage[FeiertagEnum::KARFREITAG] =  $feiertagFactory->Karfreitag($jahr);
+        $this->feiertage[FeiertagEnum::OSTERSONNTAG] =  $feiertagFactory->OsterSonntag($jahr);
+        $this->feiertage[FeiertagEnum::OSTERMONTAG] =  $feiertagFactory->OsterMontag($jahr);
+        $this->feiertage[FeiertagEnum::TAGDERARBEIT] =  $feiertagFactory->TagDerArbeit($jahr);
+        $this->feiertage[FeiertagEnum::CHRISTIHIMMELFAHRT] =  $feiertagFactory->ChristiHimmelfahrt($jahr);
+        $this->feiertage[FeiertagEnum::PFINGSTSONNTAG] =  $feiertagFactory->PfingstSonntag($jahr);
+        $this->feiertage[FeiertagEnum::PFINGSTMONTAG] =  $feiertagFactory->PfingstMontag($jahr);
+        $this->feiertage[FeiertagEnum::FRONLEICHNAM] =  $feiertagFactory->Fronleichnam($jahr);
+        $this->feiertage[FeiertagEnum::AUGSBURGERFRIEDENSFEST] =  $feiertagFactory->AugsburgerFriedensfest($jahr);
+        $this->feiertage[FeiertagEnum::MARIAEHIMMELFAHRT] =  $feiertagFactory->MariaeHimmelfahrt($jahr);
+        $this->feiertage[FeiertagEnum::TAGDERDEUTSCHENEINHEIT] =  $feiertagFactory->TagDerDeutschenEinheit($jahr);
+        $this->feiertage[FeiertagEnum::REFORMATIONSTAG] =  $feiertagFactory->Reformationstag($jahr);
+        $this->feiertage[FeiertagEnum::ALLERHEILIGEN] =  $feiertagFactory->Allerheiligen($jahr);
+        $this->feiertage[FeiertagEnum::BUSSUNDBETTAG] =  $feiertagFactory->BussUndBettag($jahr);
+        $this->feiertage[FeiertagEnum::ERSTERWEIHNACHTSTAG] =  $feiertagFactory->ErsterWeihnachtstag($jahr);
+        $this->feiertage[FeiertagEnum::ZWEITERWEIHNACHTSTAG] =  $feiertagFactory->ZweiterWeihnachtstag($jahr);
     }
 
     /**

@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use maxmeffert\feiertage\Feiertage;
 use maxmeffert\feiertage\Feiertag;
 use maxmeffert\feiertage\FeiertagEnum;
+use maxmeffert\feiertage\FeiertagFactory;
 
 class FeiertageTest extends TestCase
 {
@@ -39,9 +40,11 @@ class FeiertageTest extends TestCase
 
     public function testCheck()
     {
+        $feiertagFactory = new FeiertagFactory();
+
         $this->assertFalse(Feiertage::check(123456789));
-        $this->assertTrue(Feiertage::check(Feiertag::Allerheiligen(2016)));
-        $this->assertTrue(Feiertage::check(Feiertag::Allerheiligen(2016)->getDate()));
+        $this->assertTrue(Feiertage::check($feiertagFactory->Allerheiligen(2016)));
+        $this->assertTrue(Feiertage::check($feiertagFactory->Allerheiligen(2016)->getDate()));
         $this->assertFalse(Feiertage::check(new \DateTime("2016-07-23")));
         
         $date = new \DateTime();
@@ -52,16 +55,18 @@ class FeiertageTest extends TestCase
 
     public function testWhich()
     {
+        $feiertagFactory = new FeiertagFactory();
+
         $jahr = Feiertage::Jahr();
         
-        $expected = Feiertag::Allerheiligen($jahr);
+        $expected = $feiertagFactory->Allerheiligen($jahr);
         
-        $optional = Feiertage::which(Feiertag::Allerheiligen($jahr));
+        $optional = Feiertage::which($feiertagFactory->Allerheiligen($jahr));
         $this->assertTrue($optional->isPresent());
         $this->assertFalse($optional->isAbsent());
         $this->assertEquals($expected, $optional->getValue());
         
-        $optional = Feiertage::which(Feiertag::Allerheiligen($jahr)->getDate());
+        $optional = Feiertage::which($feiertagFactory->Allerheiligen($jahr)->getDate());
         $this->assertTrue($optional->isPresent());
         $this->assertFalse($optional->isAbsent());
         $this->assertEquals($expected, $optional->getValue());
@@ -73,6 +78,8 @@ class FeiertageTest extends TestCase
 
     public function testGet()
     {
+        $feiertagFactory = new FeiertagFactory();
+        
         $jahr = Feiertage::Jahr();
         
         $feiertage = Feiertage::of($jahr);
@@ -81,7 +88,7 @@ class FeiertageTest extends TestCase
         $optional = $feiertage->get($date);
         $this->assertTrue($optional->isPresent());
         $this->assertFalse($optional->isAbsent());
-        $this->assertEquals(Feiertag::Neujahrstag($jahr), $optional->getValue());
+        $this->assertEquals($feiertagFactory->Neujahrstag($jahr), $optional->getValue());
         
         $date = new \DateTime("$jahr-07-23");
         $optional = $feiertage->get($date);
