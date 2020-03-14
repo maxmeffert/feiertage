@@ -1,9 +1,6 @@
 <?php
 namespace maxmeffert\feiertage;
 
-use Sabertooth\Optionals\OptionalInterface;
-use Sabertooth\Optionals\Optional;
-
 class Feiertage
 {
 
@@ -57,14 +54,14 @@ class Feiertage
         return false;
     }
 
-    public static function which($object): OptionalInterface
+    public static function which($object): int
     {
         if ($object instanceof Feiertag) {
-            return Optional::Of($object);
+            return $object->getKey();
         } elseif ($object instanceof \DateTimeInterface) {
-            return Feiertage::of(self::jahr($object))->get($object);
+            return Feiertage::of(self::jahr($object))->getKey();
         }
         
-        return Optional::Absent();
+        return FeiertagEnum::NONE;
     }
 }

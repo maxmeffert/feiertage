@@ -3,6 +3,8 @@ namespace maxmeffert\feiertage;
 
 abstract class FeiertagEnum {
     
+    const NONE = -1;
+
     const NEUJAHRSTAG = 0;
     const HEILIGEDREIKOENIGE = 1;
     const GRUENDONNERSTAG = 2;

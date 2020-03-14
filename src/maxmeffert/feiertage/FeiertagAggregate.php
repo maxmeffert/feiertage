@@ -87,15 +87,4 @@ class FeiertagAggregate implements \ArrayAccess, \IteratorAggregate
         
         return false;
     }
-
-    public function get(\DateTimeInterface $date): OptionalInterface
-    {
-        foreach ($this as $key => $f) {
-            if ($f->getDate() == $date) {
-                return Optional::Of(clone $f);
-            }
-        }
-        
-        return Optional::Absent();
-    }
 }

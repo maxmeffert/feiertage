@@ -24,8 +24,9 @@ class FeiertagTest extends TestCase
         
         $this->assertIsArray($keys);
         
-        $this->assertEquals(19, count($keys));
+        $this->assertEquals(20, count($keys));
         
+        $this->assertContains(FeiertagEnum::NONE, $keys);
         $this->assertContains(FeiertagEnum::NEUJAHRSTAG, $keys);
         $this->assertContains(FeiertagEnum::HEILIGEDREIKOENIGE, $keys);
         $this->assertContains(FeiertagEnum::GRUENDONNERSTAG, $keys);

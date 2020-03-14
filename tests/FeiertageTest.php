@@ -59,44 +59,14 @@ class FeiertageTest extends TestCase
         $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
 
         $jahr = Feiertage::Jahr();
-        
-        $expected = $feiertagFactory->Allerheiligen($jahr);
-        
-        $optional = Feiertage::which($feiertagFactory->Allerheiligen($jahr));
-        $this->assertTrue($optional->isPresent());
-        $this->assertFalse($optional->isAbsent());
-        $this->assertEquals($expected, $optional->getValue());
-        
-        $optional = Feiertage::which($feiertagFactory->Allerheiligen($jahr)->getDate());
-        $this->assertTrue($optional->isPresent());
-        $this->assertFalse($optional->isAbsent());
-        $this->assertEquals($expected, $optional->getValue());
-        
-        $optional = Feiertage::which(123456789);
-        $this->assertTrue($optional->isAbsent());
-        $this->assertFalse($optional->isPresent());
+                
+        $which = Feiertage::which($feiertagFactory->Allerheiligen($jahr));
+        $this->assertEquals(FeiertagEnum::ALLERHEILIGEN, $which);
+                
+        $which = Feiertage::which(123456789);
+        $this->assertEquals(FeiertagEnum::NONE, $which);
     }
-
-    public function testGet()
-    {
-        $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
-
-        $jahr = Feiertage::Jahr();
-        
-        $feiertage = Feiertage::of($jahr);
-        
-        $date = new \DateTime("$jahr-01-01");
-        $optional = $feiertage->get($date);
-        $this->assertTrue($optional->isPresent());
-        $this->assertFalse($optional->isAbsent());
-        $this->assertEquals($feiertagFactory->Neujahrstag($jahr), $optional->getValue());
-        
-        $date = new \DateTime("$jahr-07-23");
-        $optional = $feiertage->get($date);
-        $this->assertFalse($optional->isPresent());
-        $this->assertTrue($optional->isAbsent());
-    }
-
+    
     /**
      * Tests holidays for 2016.
      * Also checks ArrayAccess implementation.
