@@ -4,44 +4,53 @@ namespace maxmeffert\feiertage\tests;
 use PHPUnit\Framework\TestCase;
 use maxmeffert\feiertage\Feiertag;
 use maxmeffert\feiertage\FeiertagEnum;
-use maxmeffert\feiertage\FeiertagFactory;
-use maxmeffert\feiertage\GaussianEasterSundayCalculator;
 
 class FeiertagTest extends TestCase
 {
-    private $feiertagFactory;
+    private $key;
+    private $date;
+    private $feiertag;
 
     protected function setUp(): void
     {
-        $this->feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
+        $this->key = FeiertagEnum::ALLERHEILIGEN;
+        $this->date = date_create("2020-02-02");
+        $this->feiertag = new Feiertag($this->key, $this->date);
     }
 
-    public function testDateTimeInterface()
+    public function testFormat()
+    {        
+        $this->assertEquals($this->feiertag->format(\DateTime::ISO8601), $this->date->format(\DateTime::ISO8601));
+    }
+
+    public function testGetOffset()
     {
-        $feiertag =  $this->feiertagFactory->Neujahrstag(2016);
-        $date = $feiertag->getDate();
-        
-        $this->assertEquals($feiertag->format(\DateTime::ISO8601), $date->format(\DateTime::ISO8601));
-        $this->assertEquals($feiertag->getOffset(), $date->getOffset());
-        $this->assertEquals($feiertag->getTimestamp(), $date->getTimestamp());
-        $this->assertEquals($feiertag->getTimezone(), $date->getTimezone());
+        $this->assertEquals($this->feiertag->getOffset(), $this->date->getOffset());
+    }
+
+    public function testGetTimestamp()
+    {
+        $this->assertEquals($this->feiertag->getTimestamp(), $this->date->getTimestamp());
+    }
+
+    public function testGetTimesone()
+    {
+        $this->assertEquals($this->feiertag->getTimezone(), $this->date->getTimezone());
     }
 
     public function testToDateTime()
     {
-        $feiertag =  $this->feiertagFactory->Neujahrstag(2016);
-        $date = $feiertag->toDateTime();
+        $date = $this->feiertag->toDateTime();
         
         $this->assertInstanceOf(\DateTime::class, $date);
-        $this->assertEquals($feiertag->getDate(), $date);
+        $this->assertEquals($this->feiertag->getDate(), $date);
     }
 
     public function testToDateTimeImmutable()
     {
-        $feiertag =  $this->feiertagFactory->Neujahrstag(2016);
-        $date = $feiertag->toDateTimeImmutable();
+        $date = $this->feiertag->toDateTimeImmutable();
         
         $this->assertInstanceOf(\DateTimeImmutable::class, $date);
-        $this->assertEquals($feiertag->getDate(), $date);
+        $this->assertEquals($this->feiertag->getDate(), $date);
     }
 }

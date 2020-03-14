@@ -10,7 +10,7 @@ use maxmeffert\feiertage\GaussianEasterSundayCalculator;
 class FeiertagFactoryTest extends TestCase
 {
     private $feiertagFactory;
-    
+
     protected function setUp(): void
     {
         $this->feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
@@ -121,7 +121,7 @@ class FeiertagFactoryTest extends TestCase
     }
     
     public function testTagDerDeutschenEinheit()
-    {  
+    {
         $feiertag = $this->feiertagFactory->TagDerDeutschenEinheit(2016);
 
         $this->assertEquals(FeiertagEnum::TAGDERDEUTSCHENEINHEIT, $feiertag->getKey());
