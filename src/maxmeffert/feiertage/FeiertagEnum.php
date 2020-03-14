@@ -1,7 +1,8 @@
 <?php
 namespace maxmeffert\feiertage;
 
-abstract class FeiertagEnum {
+abstract class FeiertagEnum
+{
     
     const NONE = -1;
 

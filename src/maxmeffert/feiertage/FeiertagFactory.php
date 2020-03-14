@@ -4,12 +4,12 @@ namespace maxmeffert\feiertage;
 class FeiertagFactory 
 {
     private $easterSundayCalculator;
-    
+
     public function __construct(EasterSundayCalculatorInterface $easterSundayCalculator)
     {
         $this->easterSundayCalculator = $easterSundayCalculator;
     }
-    
+
     public function neujahrstag(int $jahr): Feiertag
     {
         return new Feiertag(FeiertagEnum::NEUJAHRSTAG, new \DateTimeImmutable("$jahr-01-01"));

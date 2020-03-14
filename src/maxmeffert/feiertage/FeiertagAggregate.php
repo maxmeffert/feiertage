@@ -44,7 +44,7 @@ class FeiertagAggregate implements \ArrayAccess, \IteratorAggregate
 
     public function toDateTimeImmutables(): array
     {
-        return array_map(function (Feiertag $f) {            
+        return array_map(function (Feiertag $f) {
             return $f->toDateTimeImmutable();
         }, $this->toArray());
     }

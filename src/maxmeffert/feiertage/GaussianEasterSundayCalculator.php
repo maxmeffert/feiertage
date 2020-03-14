@@ -11,7 +11,6 @@ class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
     private static function mod(int $a, int $b): int
     {
         return intval($a % $b);
-
     }
 
     /**

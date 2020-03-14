@@ -13,7 +13,7 @@ class FeiertagTest extends TestCase
 {
     private $feiertagFactory;
 
-    protected function setUp(): void 
+    protected function setUp(): void
     {
         $this->feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
     }
@@ -52,50 +52,50 @@ class FeiertagTest extends TestCase
     {
         $jahr = 2016;
 
-        $this->assertEquals(FeiertagEnum::NEUJAHRSTAG,  $this->feiertagFactory->Neujahrstag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::HEILIGEDREIKOENIGE,  $this->feiertagFactory->HeiligeDreiKoenige($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::GRUENDONNERSTAG,  $this->feiertagFactory->GruenDonnerstag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::KARFREITAG,  $this->feiertagFactory->Karfreitag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::OSTERSONNTAG,  $this->feiertagFactory->OsterSonntag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::OSTERMONTAG,  $this->feiertagFactory->OsterMontag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::TAGDERARBEIT,  $this->feiertagFactory->TagDerArbeit($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::CHRISTIHIMMELFAHRT,  $this->feiertagFactory->ChristiHimmelfahrt($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::PFINGSTSONNTAG,  $this->feiertagFactory->PfingstSonntag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::PFINGSTMONTAG,  $this->feiertagFactory->PfingstMontag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::FRONLEICHNAM,  $this->feiertagFactory->Fronleichnam($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::AUGSBURGERFRIEDENSFEST,  $this->feiertagFactory->AugsburgerFriedensfest($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::MARIAEHIMMELFAHRT,  $this->feiertagFactory->MariaeHimmelfahrt($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::TAGDERDEUTSCHENEINHEIT,  $this->feiertagFactory->TagDerDeutschenEinheit($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::REFORMATIONSTAG,  $this->feiertagFactory->Reformationstag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::ALLERHEILIGEN,  $this->feiertagFactory->Allerheiligen($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::BUSSUNDBETTAG,  $this->feiertagFactory->BussUndBettag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::ERSTERWEIHNACHTSTAG,  $this->feiertagFactory->ErsterWeihnachtstag($jahr)->getKey());
-        $this->assertEquals(FeiertagEnum::ZWEITERWEIHNACHTSTAG,  $this->feiertagFactory->ZweiterWeihnachtstag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::NEUJAHRSTAG, $this->feiertagFactory->Neujahrstag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::HEILIGEDREIKOENIGE, $this->feiertagFactory->HeiligeDreiKoenige($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::GRUENDONNERSTAG, $this->feiertagFactory->GruenDonnerstag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::KARFREITAG, $this->feiertagFactory->Karfreitag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::OSTERSONNTAG, $this->feiertagFactory->OsterSonntag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::OSTERMONTAG, $this->feiertagFactory->OsterMontag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::TAGDERARBEIT, $this->feiertagFactory->TagDerArbeit($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::CHRISTIHIMMELFAHRT, $this->feiertagFactory->ChristiHimmelfahrt($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::PFINGSTSONNTAG, $this->feiertagFactory->PfingstSonntag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::PFINGSTMONTAG, $this->feiertagFactory->PfingstMontag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::FRONLEICHNAM, $this->feiertagFactory->Fronleichnam($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::AUGSBURGERFRIEDENSFEST, $this->feiertagFactory->AugsburgerFriedensfest($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::MARIAEHIMMELFAHRT, $this->feiertagFactory->MariaeHimmelfahrt($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::TAGDERDEUTSCHENEINHEIT, $this->feiertagFactory->TagDerDeutschenEinheit($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::REFORMATIONSTAG, $this->feiertagFactory->Reformationstag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::ALLERHEILIGEN, $this->feiertagFactory->Allerheiligen($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::BUSSUNDBETTAG, $this->feiertagFactory->BussUndBettag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::ERSTERWEIHNACHTSTAG, $this->feiertagFactory->ErsterWeihnachtstag($jahr)->getKey());
+        $this->assertEquals(FeiertagEnum::ZWEITERWEIHNACHTSTAG, $this->feiertagFactory->ZweiterWeihnachtstag($jahr)->getKey());
     }
 
     public function test2016()
     {
         $jahr = 2016;
 
-        $this->assertEquals( $this->feiertagFactory->Neujahrstag($jahr)->getDate(), date_create("2016-01-01"));
-        $this->assertEquals( $this->feiertagFactory->HeiligeDreiKoenige($jahr)->getDate(), date_create("2016-01-06"));
-        $this->assertEquals( $this->feiertagFactory->GruenDonnerstag($jahr)->getDate(), date_create("2016-03-24"));
-        $this->assertEquals( $this->feiertagFactory->Karfreitag($jahr)->getDate(), date_create("2016-03-25"));
-        $this->assertEquals( $this->feiertagFactory->OsterSonntag($jahr)->getDate(), date_create("2016-03-27"));
-        $this->assertEquals( $this->feiertagFactory->OsterMontag($jahr)->getDate(), date_create("2016-03-28"));
-        $this->assertEquals( $this->feiertagFactory->TagDerArbeit($jahr)->getDate(), date_create("2016-05-01"));
-        $this->assertEquals( $this->feiertagFactory->ChristiHimmelfahrt($jahr)->getDate(), date_create("2016-05-05"));
-        $this->assertEquals( $this->feiertagFactory->PfingstSonntag($jahr)->getDate(), date_create("2016-05-15"));
-        $this->assertEquals( $this->feiertagFactory->PfingstMontag($jahr)->getDate(), date_create("2016-05-16"));
-        $this->assertEquals( $this->feiertagFactory->Fronleichnam($jahr)->getDate(), date_create("2016-05-26"));
-        $this->assertEquals( $this->feiertagFactory->AugsburgerFriedensfest($jahr)->getDate(), date_create("2016-08-08"));
-        $this->assertEquals( $this->feiertagFactory->MariaeHimmelfahrt($jahr)->getDate(), date_create("2016-08-15"));
-        $this->assertEquals( $this->feiertagFactory->TagDerDeutschenEinheit($jahr)->getDate(), date_create("2016-10-03"));
-        $this->assertEquals( $this->feiertagFactory->Reformationstag($jahr)->getDate(), date_create("2016-10-31"));
-        $this->assertEquals( $this->feiertagFactory->Allerheiligen($jahr)->getDate(), date_create("2016-11-01"));
-        $this->assertEquals( $this->feiertagFactory->BussUndBettag($jahr)->getDate(), date_create("2016-11-16"));
-        $this->assertEquals( $this->feiertagFactory->ErsterWeihnachtstag($jahr)->getDate(), date_create("2016-12-25"));
-        $this->assertEquals( $this->feiertagFactory->ZweiterWeihnachtstag($jahr)->getDate(), date_create("2016-12-26"));
+        $this->assertEquals($this->feiertagFactory->Neujahrstag($jahr)->getDate(), date_create("2016-01-01"));
+        $this->assertEquals($this->feiertagFactory->HeiligeDreiKoenige($jahr)->getDate(), date_create("2016-01-06"));
+        $this->assertEquals($this->feiertagFactory->GruenDonnerstag($jahr)->getDate(), date_create("2016-03-24"));
+        $this->assertEquals($this->feiertagFactory->Karfreitag($jahr)->getDate(), date_create("2016-03-25"));
+        $this->assertEquals($this->feiertagFactory->OsterSonntag($jahr)->getDate(), date_create("2016-03-27"));
+        $this->assertEquals($this->feiertagFactory->OsterMontag($jahr)->getDate(), date_create("2016-03-28"));
+        $this->assertEquals($this->feiertagFactory->TagDerArbeit($jahr)->getDate(), date_create("2016-05-01"));
+        $this->assertEquals($this->feiertagFactory->ChristiHimmelfahrt($jahr)->getDate(), date_create("2016-05-05"));
+        $this->assertEquals($this->feiertagFactory->PfingstSonntag($jahr)->getDate(), date_create("2016-05-15"));
+        $this->assertEquals($this->feiertagFactory->PfingstMontag($jahr)->getDate(), date_create("2016-05-16"));
+        $this->assertEquals($this->feiertagFactory->Fronleichnam($jahr)->getDate(), date_create("2016-05-26"));
+        $this->assertEquals($this->feiertagFactory->AugsburgerFriedensfest($jahr)->getDate(), date_create("2016-08-08"));
+        $this->assertEquals($this->feiertagFactory->MariaeHimmelfahrt($jahr)->getDate(), date_create("2016-08-15"));
+        $this->assertEquals($this->feiertagFactory->TagDerDeutschenEinheit($jahr)->getDate(), date_create("2016-10-03"));
+        $this->assertEquals($this->feiertagFactory->Reformationstag($jahr)->getDate(), date_create("2016-10-31"));
+        $this->assertEquals($this->feiertagFactory->Allerheiligen($jahr)->getDate(), date_create("2016-11-01"));
+        $this->assertEquals($this->feiertagFactory->BussUndBettag($jahr)->getDate(), date_create("2016-11-16"));
+        $this->assertEquals($this->feiertagFactory->ErsterWeihnachtstag($jahr)->getDate(), date_create("2016-12-25"));
+        $this->assertEquals($this->feiertagFactory->ZweiterWeihnachtstag($jahr)->getDate(), date_create("2016-12-26"));
     }
 
     public function testDateTimeInterface()
