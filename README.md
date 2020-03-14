@@ -71,19 +71,14 @@ The *[Gaussian Easter Formula](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Oster
 The implementation of the *[Gaussian Easter Formula](https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel)* used by this library looks like this:
 ```php
 function div (int $a, int $b) : int {
-
 	return intval( $a / $b );
-
 }
 
 function mod (int $a, int $b) : int {
-
 	return intval( $a % $b );
-
 }
 
 function gauss (int $year) : int {
-	
 	$a = mod($year, 19);
 	$b = mod($year, 4);
 	$c = mod($year, 7);
@@ -96,36 +91,27 @@ function gauss (int $year) : int {
 	$o = 22 + $d + $e;
 
 	if ($o == 57) {
-		
 		$o = 50;
-		
 	}
 	
 	if ($d == 28 && $e == 6 && $a > 10) {
-		
 		$o = 49;
-		
 	}
 
 	return $o;
-
 }
 
 function easterSunday (int $year) : \DateTimeImmutable {
-		
 	$day = gauss($year);
 	
 	$month = 3;
 	
 	if (31 < $os) {
-	
 		$day = mod($os, 31);
 		$month = 4;
-	
 	}
 	
 	return new \DateTimeImmutable("{$year}-{$month}-{$day}");
-	
 }
 ```
 Other reference implementations can be found here:
