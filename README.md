@@ -15,7 +15,7 @@ A PHP7 utility for **legal holidiays in Germany**.
 ## Installation
 
 ```
-composer require intrawarez/feiertage
+composer require maxmeffert/feiertage
 ```
 
 ## Documentation
@@ -26,46 +26,38 @@ Documentation can be found [here](http://intrawarez.github.io/feiertage/docs/).
 
 ### Get all holidays for specific year
 ```php
-$ft = Feiertage::of(2016);
-
+$ft = Feiertage::of(2020);
 ```
 
 ### Get a specific holliday
 ```php
-$os = Feiertag::OsterSonntag(2016);
-
-```
-or use array-access capabilities:
-```php
-$ft = Feiertage::of(2016);
-$os = $ft[Feiertag::OSTERSONNTAG];
-
+$ft = Feiertage::of(2020);
+$os = $ft[FeiertagEnum::OSTERSONNTAG];
 ```
 
 ### Check dates for holidays
 ```php
 $date = new \DateTime(...);
-Feiertage::check($date); // true or false
+if (Feiertage::check($date))
+{
+	...
+}
 ```
 or get the corresponding constang:
 ```php
 $date = new \DateTime(...);
-$which = Feiertage::which($date); // returns an Optional aka MayBe data structure
-
-if ($which->isPresent()) {
-
-	... $which->get() ...
-
+$which = Feiertage::which($date);
+if ($which == FeiertagEnum::OSTERSONNTAG)
+{
+	... 
 }
-
 ```
 
 ### Iterate over holidays
 ```php
-foreach (Feiertage::of(2016) as $holiday) {
-
+foreach (Feiertage::of(2020) as $holiday)
+{
 	...
-
 }
 ```
 
@@ -145,7 +137,7 @@ Other reference implementations can be found here:
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Maximilian Meffert
+Copyright (c) 2020 Maximilian Meffert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
