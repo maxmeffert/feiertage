@@ -10,6 +10,4 @@ composer.lock
 
 clover.xml
 
-sami.phar
-
-gauss.php
+.phpunit.result.cache
