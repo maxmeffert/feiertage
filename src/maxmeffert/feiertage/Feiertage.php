@@ -3,22 +3,10 @@ namespace maxmeffert\feiertage;
 
 class Feiertage
 {
-    public static function jahr(\DateTimeInterface $d = null): int
+    public static function of(int $jahr): FeiertagAggregate
     {
-        if (is_null($d)) {
-            $d = new \DateTime();
-        }
-        
-        return intval($d->format("Y"));
-    }
-
-    public static function of(int $jahr = null): FeiertagAggregate
-    {
-        if (is_null($jahr)) {
-            $jahr = self::jahr();
-        }
-        
         $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
+        
         $feiertage[FeiertagEnum::NEUJAHRSTAG] =  $feiertagFactory->Neujahrstag($jahr);
         $feiertage[FeiertagEnum::HEILIGEDREIKOENIGE] =  $feiertagFactory->HeiligeDreiKoenige($jahr);
         $feiertage[FeiertagEnum::GRUENDONNERSTAG] =  $feiertagFactory->GruenDonnerstag($jahr);
@@ -47,7 +35,7 @@ class Feiertage
         if ($object instanceof Feiertag) {
             return true;
         } elseif ($object instanceof \DateTimeInterface) {
-            return Feiertage::of(self::jahr($object))->contains($object);
+            return Feiertage::of(self::yearOf($object))->contains($object);
         }
         
         return false;
@@ -58,9 +46,14 @@ class Feiertage
         if ($object instanceof Feiertag) {
             return $object->getKey();
         } elseif ($object instanceof \DateTimeInterface) {
-            return Feiertage::of(self::jahr($object))->getKey();
+            return Feiertage::of(self::yearOf($object))->getKey();
         }
         
         return FeiertagEnum::NONE;
+    }
+    
+    private static function yearOf(\DateTimeInterface $d): int
+    {
+        return intval($d->format("Y"));
     }
 }

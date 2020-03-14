@@ -12,25 +12,12 @@ use maxmeffert\feiertage\GaussianEasterSundayCalculator;
 
 class FeiertageTest extends TestCase
 {
-
-    public function testJahr()
-    {
-        $date = new \DateTime();
-        
-        $this->assertEquals(intval($date->format("Y")), Feiertage::Jahr());
-        
-        $date = new \DateTime("666-06-06");
-        
-        $this->assertEquals(intval($date->format("Y")), Feiertage::Jahr($date));
-        $this->assertEquals(666, Feiertage::Jahr($date));
-    }
-
     public function testOf()
     {
         $date = new \DateTime();
         $jahr = intval($date->format("Y"));
         
-        $feiertage = Feiertage::of();
+        $feiertage = Feiertage::of($jahr);
         
         $this->assertEquals($jahr, $feiertage->getJahr());
         
@@ -49,7 +36,9 @@ class FeiertageTest extends TestCase
         $this->assertFalse(Feiertage::check(new \DateTime("2016-07-23")));
         
         $date = new \DateTime();
-        $feiertage = Feiertage::of(Feiertage::Jahr($date));
+        $jahr = intval($date->format("Y"));
+
+        $feiertage = Feiertage::of($jahr);
         
         $this->assertEquals($feiertage->contains($date), Feiertage::check($date));
     }
@@ -58,7 +47,8 @@ class FeiertageTest extends TestCase
     {
         $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
 
-        $jahr = Feiertage::Jahr();
+        $now = new \DateTime();
+        $jahr = intval($now->format("Y"));
                 
         $which = Feiertage::which($feiertagFactory->Allerheiligen($jahr));
         $this->assertEquals(FeiertagEnum::ALLERHEILIGEN, $which);
@@ -129,7 +119,8 @@ class FeiertageTest extends TestCase
 
     public function testGetDates()
     {
-        $jahr = Feiertage::Jahr();
+        $now = new \DateTime();
+        $jahr = intval($now->format("Y"));
         
         $feiertage = Feiertage::of($jahr);
         
@@ -148,7 +139,8 @@ class FeiertageTest extends TestCase
 
     public function testToDateTimes()
     {
-        $jahr = Feiertage::Jahr();
+        $now = new \DateTime();
+        $jahr = intval($now->format("Y"));
         
         $feiertage = Feiertage::of($jahr);
         
@@ -167,7 +159,8 @@ class FeiertageTest extends TestCase
 
     public function testToDateTimeImmutabless()
     {
-        $jahr = Feiertage::Jahr();
+        $now = new \DateTime();
+        $jahr = intval($now->format("Y"));
         
         $feiertage = Feiertage::of($jahr);
         
