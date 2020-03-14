@@ -1,18 +1,18 @@
 <?php
 namespace maxmeffert\feiertage;
 
-function div(int $a, int $b): int
-{
-    return intval($a / $b);
-}
-
-function mod(int $a, int $b): int
-{
-    return intval($a % $b);
-}
-
 class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
 {
+    private static function div(int $a, int $b): int
+    {
+        return intval($a / $b);
+    }
+    
+    private static function mod(int $a, int $b): int
+    {
+        return intval($a % $b);
+
+    }
 
     /**
      * Computes the "Gauss-Day-Number" of <b>Easter Sunday</b> for a given year.
@@ -29,17 +29,17 @@ class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
      * @param int $year The given year.
      * @return int The "Gauss-Day-Number" of <b>Easter Sunday</b> for the given year.
      */
-    public static function gauss(int $year): int
+    private static function gauss(int $year): int
     {
-        $a = mod($year, 19);
-        $b = mod($year, 4);
-        $c = mod($year, 7);
-        $H1 = div($year, 100);
-        $H2 = div($year, 400);
+        $a = self::mod($year, 19);
+        $b = self::mod($year, 4);
+        $c = self::mod($year, 7);
+        $H1 = self::div($year, 100);
+        $H2 = self::div($year, 400);
         $N = 4 + $H1 - $H2;
-        $M = 15 + $H1 - $H2 - div(8 * $H1 + 13, 25);
-        $d = mod(19 * $a + $M, 30);
-        $e = mod(2 * $b + 4 * $c + 6 * $d + $N, 7);
+        $M = 15 + $H1 - $H2 - self::div(8 * $H1 + 13, 25);
+        $d = self::mod(19 * $a + $M, 30);
+        $e = self::mod(2 * $b + 4 * $c + 6 * $d + $N, 7);
         $o = 22 + $d + $e;
         
         if ($o == 57) {
@@ -62,7 +62,7 @@ class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
      * @param int $year The given year.
      * @return \DateTime The date of <b>Easter Sunday</b> for the given year.
      */
-    public static function date(int $year): \DateTimeImmutable
+    public function calculate(int $year): \DateTimeImmutable
     {
         $os = self::gauss($year);
         
@@ -74,10 +74,5 @@ class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
         }
         
         return new \DateTimeImmutable("{$year}-{$monat}-{$os}");
-    }
-
-    public function calculate(int $year): \DateTimeImmutable
-    {
-        return $this->date($year);
     }
 }
