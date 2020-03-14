@@ -1,37 +1,16 @@
 <?php
 namespace maxmeffert\feiertage;
 
-/**
- * Utility function for integer division.
- *
- * @author maxmeffert
- * @param int $a
- * @param int $b
- * @return int
- */
 function div(int $a, int $b): int
 {
     return intval($a / $b);
 }
 
-/**
- * Utility function for integer modulo.
- *
- * @author maxmeffert
- * @param int $a
- * @param int $b
- * @return int
- */
 function mod(int $a, int $b): int
 {
     return intval($a % $b);
 }
 
-/**
- * A collection of functions to compute <b>Easter Sunday</b> for a given year.
- *
- * @author maxmeffert
- */
 class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
 {
 

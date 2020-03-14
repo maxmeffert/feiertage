@@ -4,28 +4,9 @@ namespace maxmeffert\feiertage;
 use Sabertooth\Optionals\OptionalInterface;
 use Sabertooth\Optionals\Optional;
 
-/**
- * Represents all 19 legal holidiays in Germany for a given year.
- * Computes movable holidays, i.e. christian holidays, with the *Gaussian Easter Algorithm*.
- *
- * @author maxmeffert
- * @link https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
- */
 class Feiertage
 {
 
-    /*
-     * ===========================================================
-     * Utility Methods
-     * ===========================================================
-     */
-    
-    /**
-     * Gets either the current year or the year of a given date.
-     *
-     * @param \DateTimeInterface $d The given date.
-     * @return int The year.
-     */
     public static function jahr(\DateTimeInterface $d = null): int
     {
         if (is_null($d)) {
@@ -35,18 +16,6 @@ class Feiertage
         return intval($d->format("Y"));
     }
 
-    /*
-     * ===========================================================
-     * Factory Method
-     * ===========================================================
-     */
-    
-    /**
-     * Creates a new Feiertage instance for a given year.
-     *
-     * @param int $jahr The year.
-     * @return \intrawarez\feiertage\Feiertage
-     */
     public static function of(int $jahr = null): FeiertagAggregate
     {
         if (is_null($jahr)) {
@@ -77,21 +46,6 @@ class Feiertage
         return new FeiertagAggregate($jahr, $feiertage);
     }
 
-    /*
-     * ===========================================================
-     * Static API Methods
-     * ===========================================================
-     */
-    
-    /**
-     * Whether the givent object is a holiday.
-     *
-     * Returns <b>true</b> if the given object is a Feiertag instance,
-     * or if the given object is a \DateTimeInterface and a holiday in its respective year.
-     *
-     * @param object $date The given object.
-     * @return boolean
-     */
     public static function check($object): bool
     {
         if ($object instanceof Feiertag) {
@@ -103,12 +57,6 @@ class Feiertage
         return false;
     }
 
-    /**
-     * May return the Feiertag instance of a given object.
-     *
-     * @param object $date
-     * @return OptionalInterface
-     */
     public static function which($object): OptionalInterface
     {
         if ($object instanceof Feiertag) {
