@@ -13,21 +13,6 @@ class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
         return intval($a % $b);
     }
 
-    /**
-     * Computes the "Gauss-Day-Number" of <b>Easter Sunday</b> for a given year.
-     *
-     * This is the modern style implementation of the <i><a href="https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel">Gaussian Easter Algorithm</a></i>
-     * taken from <a href="http://www.nabkal.de/gauss2.html">here</a> and <a href="https://gallery.technet.microsoft.com/scriptcenter/Calculate-Date-of-Eastern-36c624f9">here</a>.
-     *
-     * The <i>Gaussian Easter Algorithm</i> computes the number of the day of easter sunday as n-th day of March, i.e. 32th March == 1st April.
-     *
-     * @link https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel
-     * @link http://www.nabkal.de/gauss2.html
-     * @link https://gallery.technet.microsoft.com/scriptcenter/Calculate-Date-of-Eastern-36c624f9
-     *
-     * @param int $year The given year.
-     * @return int The "Gauss-Day-Number" of <b>Easter Sunday</b> for the given year.
-     */
     private static function gauss(int $year): int
     {
         $a = self::mod($year, 19);
@@ -52,21 +37,13 @@ class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
         return $o;
     }
 
-    /**
-     * Computes the date of <b>Easter Sunday</b> for a given year.
-     *
-     * Instead of relying on PHP's native <b>easter_date</b> function this implementation is based on the <i>Gaussian Easter Algorithm</i>,
-     * so it is <b>not limited to unix years</b>, i.e.: 1970 - 2037.
-     *
-     * @param int $year The given year.
-     * @return \DateTime The date of <b>Easter Sunday</b> for the given year.
-     */
     public function calculate(int $year): \DateTimeImmutable
     {
         $os = self::gauss($year);
         
         $monat = 3;
         
+        // $os may be the 32. March = 1. April
         if (31 < $os) {
             $os = $os % 31;
             $monat = 4;
