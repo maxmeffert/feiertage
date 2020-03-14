@@ -11,7 +11,7 @@ use Sabertooth\Optionals\Optional;
  * @author maxmeffert
  * @link https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
  */
-class Feiertage implements \ArrayAccess, \IteratorAggregate
+class Feiertage
 {
 
     /*
@@ -47,13 +47,34 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate
      * @param int $jahr The year.
      * @return \intrawarez\feiertage\Feiertage
      */
-    public static function of(int $jahr = null): Feiertage
+    public static function of(int $jahr = null): FeiertagAggregate
     {
         if (is_null($jahr)) {
             $jahr = self::jahr();
         }
         
-        return new Feiertage($jahr);
+        $feiertagFactory = new FeiertagFactory();
+        $feiertage[FeiertagEnum::NEUJAHRSTAG] =  $feiertagFactory->Neujahrstag($jahr);
+        $feiertage[FeiertagEnum::HEILIGEDREIKOENIGE] =  $feiertagFactory->HeiligeDreiKoenige($jahr);
+        $feiertage[FeiertagEnum::GRUENDONNERSTAG] =  $feiertagFactory->GruenDonnerstag($jahr);
+        $feiertage[FeiertagEnum::KARFREITAG] =  $feiertagFactory->Karfreitag($jahr);
+        $feiertage[FeiertagEnum::OSTERSONNTAG] =  $feiertagFactory->OsterSonntag($jahr);
+        $feiertage[FeiertagEnum::OSTERMONTAG] =  $feiertagFactory->OsterMontag($jahr);
+        $feiertage[FeiertagEnum::TAGDERARBEIT] =  $feiertagFactory->TagDerArbeit($jahr);
+        $feiertage[FeiertagEnum::CHRISTIHIMMELFAHRT] =  $feiertagFactory->ChristiHimmelfahrt($jahr);
+        $feiertage[FeiertagEnum::PFINGSTSONNTAG] =  $feiertagFactory->PfingstSonntag($jahr);
+        $feiertage[FeiertagEnum::PFINGSTMONTAG] =  $feiertagFactory->PfingstMontag($jahr);
+        $feiertage[FeiertagEnum::FRONLEICHNAM] =  $feiertagFactory->Fronleichnam($jahr);
+        $feiertage[FeiertagEnum::AUGSBURGERFRIEDENSFEST] =  $feiertagFactory->AugsburgerFriedensfest($jahr);
+        $feiertage[FeiertagEnum::MARIAEHIMMELFAHRT] =  $feiertagFactory->MariaeHimmelfahrt($jahr);
+        $feiertage[FeiertagEnum::TAGDERDEUTSCHENEINHEIT] =  $feiertagFactory->TagDerDeutschenEinheit($jahr);
+        $feiertage[FeiertagEnum::REFORMATIONSTAG] =  $feiertagFactory->Reformationstag($jahr);
+        $feiertage[FeiertagEnum::ALLERHEILIGEN] =  $feiertagFactory->Allerheiligen($jahr);
+        $feiertage[FeiertagEnum::BUSSUNDBETTAG] =  $feiertagFactory->BussUndBettag($jahr);
+        $feiertage[FeiertagEnum::ERSTERWEIHNACHTSTAG] =  $feiertagFactory->ErsterWeihnachtstag($jahr);
+        $feiertage[FeiertagEnum::ZWEITERWEIHNACHTSTAG] =  $feiertagFactory->ZweiterWeihnachtstag($jahr);
+
+        return new FeiertagAggregate($jahr, $feiertage);
     }
 
     /*
@@ -94,217 +115,6 @@ class Feiertage implements \ArrayAccess, \IteratorAggregate
             return Optional::Of($object);
         } elseif ($object instanceof \DateTimeInterface) {
             return Feiertage::of(self::jahr($object))->get($object);
-        }
-        
-        return Optional::Absent();
-    }
-
-    /*
-     * ===========================================================
-     * Instance
-     * ===========================================================
-     */
-    
-    /**
-     * The year.
-     * @var int
-     */
-    private $jahr;
-
-    /**
-     * The hollydays.
-     * @var array
-     */
-    private $feiertage = [];
-
-    /**
-     * Constructs a new Feiertage instance.
-     * @param int $jahr
-     */
-    private function __construct(int $jahr)
-    {
-        $this->jahr = $jahr;
-
-        $feiertagFactory = new FeiertagFactory();
-        
-        $this->feiertage[FeiertagEnum::NEUJAHRSTAG] =  $feiertagFactory->Neujahrstag($jahr);
-        $this->feiertage[FeiertagEnum::HEILIGEDREIKOENIGE] =  $feiertagFactory->HeiligeDreiKoenige($jahr);
-        $this->feiertage[FeiertagEnum::GRUENDONNERSTAG] =  $feiertagFactory->GruenDonnerstag($jahr);
-        $this->feiertage[FeiertagEnum::KARFREITAG] =  $feiertagFactory->Karfreitag($jahr);
-        $this->feiertage[FeiertagEnum::OSTERSONNTAG] =  $feiertagFactory->OsterSonntag($jahr);
-        $this->feiertage[FeiertagEnum::OSTERMONTAG] =  $feiertagFactory->OsterMontag($jahr);
-        $this->feiertage[FeiertagEnum::TAGDERARBEIT] =  $feiertagFactory->TagDerArbeit($jahr);
-        $this->feiertage[FeiertagEnum::CHRISTIHIMMELFAHRT] =  $feiertagFactory->ChristiHimmelfahrt($jahr);
-        $this->feiertage[FeiertagEnum::PFINGSTSONNTAG] =  $feiertagFactory->PfingstSonntag($jahr);
-        $this->feiertage[FeiertagEnum::PFINGSTMONTAG] =  $feiertagFactory->PfingstMontag($jahr);
-        $this->feiertage[FeiertagEnum::FRONLEICHNAM] =  $feiertagFactory->Fronleichnam($jahr);
-        $this->feiertage[FeiertagEnum::AUGSBURGERFRIEDENSFEST] =  $feiertagFactory->AugsburgerFriedensfest($jahr);
-        $this->feiertage[FeiertagEnum::MARIAEHIMMELFAHRT] =  $feiertagFactory->MariaeHimmelfahrt($jahr);
-        $this->feiertage[FeiertagEnum::TAGDERDEUTSCHENEINHEIT] =  $feiertagFactory->TagDerDeutschenEinheit($jahr);
-        $this->feiertage[FeiertagEnum::REFORMATIONSTAG] =  $feiertagFactory->Reformationstag($jahr);
-        $this->feiertage[FeiertagEnum::ALLERHEILIGEN] =  $feiertagFactory->Allerheiligen($jahr);
-        $this->feiertage[FeiertagEnum::BUSSUNDBETTAG] =  $feiertagFactory->BussUndBettag($jahr);
-        $this->feiertage[FeiertagEnum::ERSTERWEIHNACHTSTAG] =  $feiertagFactory->ErsterWeihnachtstag($jahr);
-        $this->feiertage[FeiertagEnum::ZWEITERWEIHNACHTSTAG] =  $feiertagFactory->ZweiterWeihnachtstag($jahr);
-    }
-
-    /**
-     * Gets the year of the holidays.
-     *
-     * @return int
-     */
-    public function getJahr(): int
-    {
-        return $this->jahr;
-    }
-
-    /**
-     * Gets the array copy of all holidays.
-     *
-     * @return array The array of all Feiertag instance clones.
-     */
-    public function toArray(): array
-    {
-        $array = [];
-        
-        foreach ($this->feiertage as $key => $value) {
-            $array[$key] = clone $value;
-        }
-        
-        return $array;
-    }
-
-    /**
-     * Gets the array of dates of all hollidays.
-     *
-     * @return array The Array of \DateTimeInterface instances.
-     */
-    public function getDates(): array
-    {
-        return array_map(function (Feiertag $f) {
-            return $f->getDate();
-        }, $this->toArray());
-    }
-
-    /**
-     * Gets the array of dates of all hollidays.
-     *
-     * @return array The Array of \DateTime instances.
-     */
-    public function toDateTimes(): array
-    {
-        return array_map(function (Feiertag $f) {
-            return $f->toDateTime();
-        }, $this->toArray());
-    }
-
-    /**
-     * Gets the array of dates of all hollidays.
-     *
-     * @return array The Array of \DateTimeImmutable instances.
-     */
-    public function toDateTimeImmutables(): array
-    {
-        return array_map(function (Feiertag $f) {
-            
-            return $f->toDateTimeImmutable();
-        }, $this->toArray());
-    }
-
-    /**
-     * Gets the iterator corresponding to the Feiertage instance.
-     *
-     * @return \Iterator The Iterator
-     */
-    public function getIterator(): \Iterator
-    {
-        return new \ArrayIterator($this->toArray());
-    }
-
-    /**
-     * Whether a date for a given offset exists.
-     * A valid offset is one of the constants: Feiertage::NEUJAHRSTAGE, etc.
-     *
-     * @param int $offset The given offset.
-     * @return bool Whether the offset exists.
-     */
-    public function offsetExists($offset): bool
-    {
-        return isset($this->feiertage[$offset]);
-    }
-
-    /**
-     * Gets the date for a given offset.
-     * A valid offset is one of the constants: Feiertage::NEUJAHRSTAGE, etc.
-     *
-     * @param int $offset The given offset.
-     * @return \DateTime The date mapped to the offset.
-     */
-    public function offsetGet($offset): Feiertag
-    {
-        return clone $this->feiertage[$offset];
-    }
-
-    /**
-     * Not Supported! Feiertage ist immutable.
-     *
-     * @param int $offset
-     * @param \DateTime $value
-     * @return bool
-     */
-    public function offsetSet($offset, $value): bool
-    {
-        return false;
-    }
-
-    /**
-     * Not Supported! Feiertage ist immutable.
-     *
-     * @param int $offset
-     * @return bool
-     */
-    public function offsetUnset($offset): bool
-    {
-        return false;
-    }
-
-    /**
-     * Whether a given date is a holliday in this Fiertage instance.
-     *
-     * @param \DateTimeInterface $date The given date.
-     * @return boolean
-     */
-    public function contains(\DateTimeInterface $date): bool
-    {
-        /**
-         *
-         * @var Feiertag $f
-         */
-        foreach ($this as $f) {
-            if ($f->getDate() == $date) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
-    /**
-     * May get the Feiertag instance of a given date.
-     *
-     * @param \DateTimeInterface $date The given date.
-     * @return OptionalInterface The optional Feiertag instance.
-     */
-    public function get(\DateTimeInterface $date): OptionalInterface
-    {
-        /**
-         *
-         * @var Feiertag $f
-         */
-        foreach ($this as $key => $f) {
-            if ($f->getDate() == $date) {
-                return Optional::Of(clone $f);
-            }
         }
         
         return Optional::Absent();
