@@ -1,9 +1,6 @@
 <?php
 namespace maxmeffert\feiertage;
 
-use Sabertooth\Optionals\OptionalInterface;
-use Sabertooth\Optionals\Optional;
-
 class FeiertagAggregate implements \ArrayAccess, \IteratorAggregate
 {
     private $jahr;

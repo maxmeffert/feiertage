@@ -3,7 +3,6 @@ namespace maxmeffert\feiertage;
 
 class Feiertage
 {
-
     public static function jahr(\DateTimeInterface $d = null): int
     {
         if (is_null($d)) {
