@@ -22,7 +22,7 @@ class FeiertagAggregate implements \ArrayAccess, \IteratorAggregate
         $array = [];
         
         foreach ($this->feiertage as $key => $value) {
-            $array[$key] = clone $value;
+            $array[$key] = $value;
         }
         
         return $array;
