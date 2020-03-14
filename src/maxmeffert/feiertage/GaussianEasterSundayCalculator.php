@@ -32,7 +32,7 @@ function mod(int $a, int $b): int
  *
  * @author maxmeffert
  */
-abstract class Easter
+class GaussianEasterSundayCalculator implements EasterSundayCalculatorInterface
 {
 
     /**
@@ -95,5 +95,10 @@ abstract class Easter
         }
         
         return new \DateTimeImmutable("{$year}-{$monat}-{$os}");
+    }
+
+    public function calculate(int $year): \DateTimeImmutable
+    {
+        return $this->date($year);
     }
 }

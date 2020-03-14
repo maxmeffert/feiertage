@@ -3,6 +3,14 @@ namespace maxmeffert\feiertage;
 
 class FeiertagFactory 
 {
+    private $easterSundayCalculator;
+    
+    public function __construct()
+    {
+        $this->easterSundayCalculator = new GaussianEasterSundayCalculator();
+    }
+    
+
     /**
      * Factory Method for <b>New Year's Day</b> of a given year.
      *
@@ -33,7 +41,7 @@ class FeiertagFactory
      */
     public function gruenDonnerstag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::GRUENDONNERSTAG, Easter::date($jahr)->modify("-3 days"));
+        return new Feiertag(FeiertagEnum::GRUENDONNERSTAG, $this->easterSundayCalculator->calculate($jahr)->modify("-3 days"));
     }
 
     /**
@@ -44,7 +52,7 @@ class FeiertagFactory
      */
     public function karfreitag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::KARFREITAG, Easter::date($jahr)->modify("-2 days"));
+        return new Feiertag(FeiertagEnum::KARFREITAG, $this->easterSundayCalculator->calculate($jahr)->modify("-2 days"));
     }
 
     /**
@@ -55,7 +63,7 @@ class FeiertagFactory
      */
     public function osterSonntag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::OSTERSONNTAG, Easter::date($jahr));
+        return new Feiertag(FeiertagEnum::OSTERSONNTAG, $this->easterSundayCalculator->calculate($jahr));
     }
 
     /**
@@ -66,7 +74,7 @@ class FeiertagFactory
      */
     public function osterMontag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::OSTERMONTAG, Easter::date($jahr)->modify("+1 days"));
+        return new Feiertag(FeiertagEnum::OSTERMONTAG, $this->easterSundayCalculator->calculate($jahr)->modify("+1 days"));
     }
 
     /**
@@ -88,7 +96,7 @@ class FeiertagFactory
      */
     public function christiHimmelfahrt(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::CHRISTIHIMMELFAHRT, Easter::date($jahr)->modify("+39 days"));
+        return new Feiertag(FeiertagEnum::CHRISTIHIMMELFAHRT, $this->easterSundayCalculator->calculate($jahr)->modify("+39 days"));
     }
 
     /**
@@ -99,7 +107,7 @@ class FeiertagFactory
      */
     public function pfingstSonntag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::PFINGSTSONNTAG, Easter::date($jahr)->modify("+49 days"));
+        return new Feiertag(FeiertagEnum::PFINGSTSONNTAG, $this->easterSundayCalculator->calculate($jahr)->modify("+49 days"));
     }
 
     /**
@@ -110,7 +118,7 @@ class FeiertagFactory
      */
     public function pfingstMontag(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::PFINGSTMONTAG, Easter::date($jahr)->modify("+50 days"));
+        return new Feiertag(FeiertagEnum::PFINGSTMONTAG, $this->easterSundayCalculator->calculate($jahr)->modify("+50 days"));
     }
 
     /**
@@ -121,7 +129,7 @@ class FeiertagFactory
      */
     public function fronleichnam(int $jahr): Feiertag
     {
-        return new Feiertag(FeiertagEnum::FRONLEICHNAM, Easter::date($jahr)->modify("+60 days"));
+        return new Feiertag(FeiertagEnum::FRONLEICHNAM, $this->easterSundayCalculator->calculate($jahr)->modify("+60 days"));
     }
 
     /**

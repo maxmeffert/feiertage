@@ -2,7 +2,7 @@
 namespace maxmeffert\feiertage\tests;
 
 use PHPUnit\Framework\TestCase;
-use maxmeffert\feiertage\Easter;
+use maxmeffert\feiertage\GaussianEasterSundayCalculator;
 
 /**
  * Gets the sorted array of konwn easter sundays from './knownEasterSundays.php'
@@ -19,8 +19,16 @@ function KnownEasterSundays(): array
  *
  * @author maxmeffert
  */
-class EasterTest extends TestCase
+class GaussianEasterSundayCalculatorTest extends TestCase
 {
+    
+
+    private $easterSundayCalculator;
+    
+    protected function setUp(): void
+    {
+        $this->easterSundayCalculator = new GaussianEasterSundayCalculator();
+    }
 
     /**
      * Computes the date of easter sunday for a given year based on PHP's native <b>easter_date</b>
@@ -51,7 +59,7 @@ class EasterTest extends TestCase
          */
         foreach (KnownEasterSundays() as $easterSunday) {
             $year = intval($easterSunday->format("Y"));
-            $this->assertEquals($easterSunday, Easter::date($year));
+            $this->assertEquals($easterSunday, $this->easterSundayCalculator->calculate($year));
         }
     }
 
@@ -61,7 +69,7 @@ class EasterTest extends TestCase
     public function testNativeEasterDateDomainCovarage()
     {
         for ($year = 1970; $year < 2038; $year ++) {
-            $this->assertEquals(self::nativeEasterSunday($year), Easter::date($year));
+            $this->assertEquals(self::nativeEasterSunday($year), $this->easterSundayCalculator->calculate($year));
         }
     }
 }
