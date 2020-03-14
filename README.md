@@ -43,7 +43,7 @@ if (Feiertage::check($date))
 	...
 }
 ```
-or get the corresponding constang:
+or get the corresponding constant:
 ```php
 $date = new \DateTime(...);
 $which = Feiertage::which($date);
