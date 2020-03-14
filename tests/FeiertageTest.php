@@ -8,6 +8,7 @@ use maxmeffert\feiertage\Feiertage;
 use maxmeffert\feiertage\Feiertag;
 use maxmeffert\feiertage\FeiertagEnum;
 use maxmeffert\feiertage\FeiertagFactory;
+use maxmeffert\feiertage\GaussianEasterSundayCalculator;
 
 class FeiertageTest extends TestCase
 {
@@ -40,7 +41,7 @@ class FeiertageTest extends TestCase
 
     public function testCheck()
     {
-        $feiertagFactory = new FeiertagFactory();
+        $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
 
         $this->assertFalse(Feiertage::check(123456789));
         $this->assertTrue(Feiertage::check($feiertagFactory->Allerheiligen(2016)));
@@ -55,7 +56,7 @@ class FeiertageTest extends TestCase
 
     public function testWhich()
     {
-        $feiertagFactory = new FeiertagFactory();
+        $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
 
         $jahr = Feiertage::Jahr();
         
@@ -78,8 +79,8 @@ class FeiertageTest extends TestCase
 
     public function testGet()
     {
-        $feiertagFactory = new FeiertagFactory();
-        
+        $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
+
         $jahr = Feiertage::Jahr();
         
         $feiertage = Feiertage::of($jahr);

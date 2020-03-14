@@ -53,7 +53,7 @@ class Feiertage
             $jahr = self::jahr();
         }
         
-        $feiertagFactory = new FeiertagFactory();
+        $feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
         $feiertage[FeiertagEnum::NEUJAHRSTAG] =  $feiertagFactory->Neujahrstag($jahr);
         $feiertage[FeiertagEnum::HEILIGEDREIKOENIGE] =  $feiertagFactory->HeiligeDreiKoenige($jahr);
         $feiertage[FeiertagEnum::GRUENDONNERSTAG] =  $feiertagFactory->GruenDonnerstag($jahr);

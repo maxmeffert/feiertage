@@ -5,9 +5,9 @@ class FeiertagFactory
 {
     private $easterSundayCalculator;
     
-    public function __construct()
+    public function __construct(EasterSundayCalculatorInterface $easterSundayCalculator)
     {
-        $this->easterSundayCalculator = new GaussianEasterSundayCalculator();
+        $this->easterSundayCalculator = $easterSundayCalculator;
     }
     
 

@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use maxmeffert\feiertage\Feiertag;
 use maxmeffert\feiertage\FeiertagEnum;
 use maxmeffert\feiertage\FeiertagFactory;
+use maxmeffert\feiertage\GaussianEasterSundayCalculator;
 
 class FeiertagTest extends TestCase
 {
@@ -14,7 +15,7 @@ class FeiertagTest extends TestCase
 
     protected function setUp(): void 
     {
-        $this->feiertagFactory = new FeiertagFactory();
+        $this->feiertagFactory = new FeiertagFactory(new GaussianEasterSundayCalculator());
     }
 
     public function testKeys()
