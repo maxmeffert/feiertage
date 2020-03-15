@@ -56,6 +56,9 @@ class FeiertageTest extends TestCase
                 
         $which = Feiertage::which(123456789);
         $this->assertEquals(FeiertagEnum::NONE, $which);
+
+        $which = Feiertage::which(date_create("2020-01-03"));
+        $this->assertEquals(FeiertagEnum::NONE, $which);
     }
     
     /**

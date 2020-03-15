@@ -70,5 +70,7 @@ class FeiertagTest extends TestCase
         $otherFeiertag = new Feiertag($otherKey, $otherDate);
         $this->assertFalse($this->feiertag->equals($otherFeiertag));
         $this->assertFalse($this->feiertag->equals($otherDate));
+
+        $this->assertFalse($this->feiertag->equals(new \stdClass()));
     }
 }
