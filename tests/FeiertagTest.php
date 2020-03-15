@@ -53,4 +53,22 @@ class FeiertagTest extends TestCase
         $this->assertInstanceOf(\DateTimeImmutable::class, $date);
         $this->assertEquals($this->feiertag->getDate(), $date);
     }
+
+    public function testEquals()
+    {
+        $this->assertTrue($this->feiertag->equals($this->feiertag));
+        $this->assertTrue($this->feiertag->equals($this->date));
+
+        $sameKey = $this->key;
+        $sameDate = $this->date;
+        $sameFeiertag = new Feiertag($sameKey, $sameDate);
+        $this->assertTrue($this->feiertag->equals($sameFeiertag));
+        $this->assertTrue($this->feiertag->equals($sameDate));
+
+        $otherKey = FeiertagEnum::ALLERHEILIGEN;
+        $otherDate = date_create("2020-05-05");
+        $otherFeiertag = new Feiertag($otherKey, $otherDate);
+        $this->assertFalse($this->feiertag->equals($otherFeiertag));
+        $this->assertFalse($this->feiertag->equals($otherDate));
+    }
 }

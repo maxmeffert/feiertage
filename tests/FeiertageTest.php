@@ -50,6 +50,9 @@ class FeiertageTest extends TestCase
                 
         $which = Feiertage::which($feiertagFactory->Allerheiligen($jahr));
         $this->assertEquals(FeiertagEnum::ALLERHEILIGEN, $which);
+
+        $which = Feiertage::which($feiertagFactory->Allerheiligen($jahr)->getDate());
+        $this->assertEquals(FeiertagEnum::ALLERHEILIGEN, $which);
                 
         $which = Feiertage::which(123456789);
         $this->assertEquals(FeiertagEnum::NONE, $which);

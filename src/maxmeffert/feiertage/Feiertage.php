@@ -1,7 +1,7 @@
 <?php
 namespace maxmeffert\feiertage;
 
-class Feiertage
+abstract class Feiertage
 {
     public static function of(int $jahr): FeiertagAggregate
     {
@@ -35,7 +35,7 @@ class Feiertage
         if ($object instanceof Feiertag) {
             return true;
         } elseif ($object instanceof \DateTimeInterface) {
-            return Feiertage::of(self::yearOf($object))->contains($object);
+            return self::of(self::yearOf($object))->contains($object);
         }
         
         return false;
@@ -46,9 +46,19 @@ class Feiertage
         if ($object instanceof Feiertag) {
             return $object->getKey();
         } elseif ($object instanceof \DateTimeInterface) {
-            return Feiertage::of(self::yearOf($object))->getKey();
+            return self::whichDateTime($object);
         }
-        
+        return FeiertagEnum::NONE;
+    }
+
+    private static function whichDateTime(\DateTimeInterface $object): int
+    {
+        $feiertage = self::of(self::yearOf($object));
+        foreach ($feiertage as $feiertag) {
+            if ($feiertag->equals($object)) {
+                return $feiertag->getKey();
+            }
+        }
         return FeiertagEnum::NONE;
     }
     

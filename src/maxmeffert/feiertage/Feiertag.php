@@ -51,4 +51,32 @@ class Feiertag
     {
         return new \DateTimeImmutable($this->format(\DateTime::ATOM), $this->getTimezone());
     }
+
+    public function equals(object $other): bool
+    {
+        if ($other instanceof Feiertag) {
+            return $this->equalsFeiertag($other);
+        } elseif ($other instanceof \DateTimeInterface) {
+            return $this->equalsDateTime($other);
+        }
+        return false;
+    }
+
+    private function equalsFeiertag(Feiertag $other): bool
+    {
+        $format = "Y-m-d";
+        $otherKey = $other->getKey();
+        $otherDate = $other->format($format);
+        $thisKey = $this->key;
+        $thisDate = $this->format($format);
+        return $otherKey == $thisKey && $otherDate == $thisDate;
+    }
+
+    private function equalsDateTime(\DateTimeInterface $other): bool
+    {
+        $format = "Y-m-d";
+        $otherDate = $other->format($format);
+        $thisDate = $this->format($format);
+        return $otherDate == $thisDate;
+    }
 }
