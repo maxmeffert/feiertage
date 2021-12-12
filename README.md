@@ -18,10 +18,6 @@ A PHP7 utility for **legal holidiays in Germany**.
 composer require maxmeffert/feiertage
 ```
 
-## Documentation
-
-Documentation can be found [here](http://intrawarez.github.io/feiertage/docs/).
-
 ## Usage
 
 ### Get all holidays for specific year
